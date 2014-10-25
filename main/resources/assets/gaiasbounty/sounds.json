@@ -1,0 +1,62 @@
+{
+   "tool.spigot": {
+      "category": "player",
+      "sounds": [
+         "tool/spigot"
+      ]
+   },
+   "effect.gas": {
+      "category": "player",
+      "sounds": [
+         "effect/gas1",
+         "effect/gas2",
+         "effect/gas3",
+         "effect/gas4",
+         "effect/gas5"
+      ]
+   },
+   "mob.bison.say": {
+      "category": "neutral",
+      "sounds": [
+         "mob/bison/say1",
+         "mob/bison/say2",
+         "mob/bison/say3",
+         "mob/bison/say4",
+         "mob/bison/say5"
+      ]
+   },
+   "mob.bison.hurt": {
+      "category": "neutral",
+      "sounds": [
+         "mob/bison/hurt1",
+         "mob/bison/hurt2",
+         "mob/bison/hurt3"
+      ]
+   },
+   "mob.turkey.say": {
+      "category": "neutral",
+      "sounds": [
+         "mob/turkey/say1"
+      ]
+   },
+   "mob.duck.say": {
+      "category": "neutral",
+      "sounds": [
+         "mob/duck/say1",
+         "mob/duck/say2",
+         "mob/duck/say3"
+      ]
+   },
+   "mob.duck.hurt": {
+      "category": "neutral",
+      "sounds": [
+         "mob/duck/hurt1"
+      ]
+   },
+   "mob.deer.hurt": {
+      "category": "neutral",
+      "sounds": [
+         "mob/deer/hurt1"
+      ]
+   }
+}
