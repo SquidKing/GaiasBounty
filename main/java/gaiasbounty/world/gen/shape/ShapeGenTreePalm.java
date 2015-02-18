@@ -1,4 +1,4 @@
-package gaiasbounty.world.gen.tree;
+package gaiasbounty.world.gen.shape;
 
 import java.util.Random;
 
@@ -6,9 +6,9 @@ import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
 import net.minecraft.world.World;
 
-public class StructureGenTreePalm extends StructureGenTree
+public class ShapeGenTreePalm extends ShapeGenTree
 {
-   public static final StructureGenTree instance = new StructureGenTreePalm();
+   public static final ShapeGenTree instance = new ShapeGenTreePalm();
    
    protected int height(Random rand)
    {

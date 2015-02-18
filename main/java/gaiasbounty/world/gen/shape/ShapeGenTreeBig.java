@@ -1,4 +1,4 @@
-package gaiasbounty.world.gen.tree;
+package gaiasbounty.world.gen.shape;
 
 import java.util.Random;
 
@@ -6,19 +6,9 @@ import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
 import net.minecraft.world.World;
 
-public class StructureGenTreeSapBig extends StructureGenTree
+public class ShapeGenTreeBig extends ShapeGenTree
 {
-   public static final StructureGenTree instance = new StructureGenTreeSapBig();
-   
-   private Block sapBlock;
-   private int[] sapMeta;
-   
-   public StructureGenTree setSapBlock(Block sapBlock, int ... sapMeta)
-   {
-      this.sapBlock = sapBlock;
-      this.sapMeta = sapMeta;
-      return this;
-   }
+   public static final ShapeGenTree instance = new ShapeGenTreeBig();
    
    protected int height(Random rand)
    {
@@ -116,11 +106,7 @@ public class StructureGenTreeSapBig extends StructureGenTree
          if (world.isAirBlock(x, y + genY, z)
                   || genPosBlock.isLeaves(world, x, y + genY, z))
          {
-            if (genY == 1)
-               world.setBlock(x, y + genY, z, this.sapBlock,
-                        this.sapMeta[rand.nextInt(this.sapMeta.length)], 2);
-            else
-               world.setBlock(x, y + genY, z, logBlock, logMeta, 2);
+            world.setBlock(x, y + genY, z, logBlock, logMeta, 2);
          }
       }
    }

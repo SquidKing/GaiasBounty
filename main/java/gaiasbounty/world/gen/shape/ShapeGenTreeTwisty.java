@@ -1,4 +1,4 @@
-package gaiasbounty.world.gen.tree;
+package gaiasbounty.world.gen.shape;
 
 import java.util.Random;
 
@@ -6,9 +6,9 @@ import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
 import net.minecraft.world.World;
 
-public class StructureGenTreeTwisty extends StructureGenTree
+public class ShapeGenTreeTwisty extends ShapeGenTree
 {
-   public static final StructureGenTree instance = new StructureGenTreeTwisty();
+   public static final ShapeGenTree instance = new ShapeGenTreeTwisty();
    private int branchX1, branchZ1, branchY1, branchX2, branchZ2, branchY2;
    private Random branchRand;
    

@@ -11,7 +11,7 @@ import gaiasbounty.potion.PotionGB;
 import gaiasbounty.recipe.RecipeManager;
 import gaiasbounty.recipe.SmeltingRecipes;
 import gaiasbounty.village.VillageManager;
-import gaiasbounty.world.gen.WorldGenManager;
+import gaiasbounty.world.WorldGenManager;
 import net.minecraft.entity.EnumCreatureType;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.tileentity.TileEntity;

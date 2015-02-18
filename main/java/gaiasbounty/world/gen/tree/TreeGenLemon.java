@@ -1,6 +1,7 @@
 package gaiasbounty.world.gen.tree;
 
 import gaiasbounty.block.BlockManager;
+import gaiasbounty.world.gen.shape.ShapeGenTreeVanShort;
 
 import java.util.Random;
 
@@ -12,7 +13,7 @@ public class TreeGenLemon extends WorldGenerator
    @Override
    public boolean generate(World world, Random rand, int x, int y, int z)
    {
-      return StructureGenTreeVanShort.instance.generate(world, rand, x, y, z,
+      return ShapeGenTreeVanShort.instance.generate(world, rand, x, y, z,
                BlockManager.logs2, 1, BlockManager.leaves2, 1);
    }
 }

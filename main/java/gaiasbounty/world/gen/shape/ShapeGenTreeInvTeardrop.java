@@ -1,4 +1,4 @@
-package gaiasbounty.world.gen.tree;
+package gaiasbounty.world.gen.shape;
 
 import java.util.Random;
 
@@ -6,13 +6,13 @@ import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
 import net.minecraft.world.World;
 
-public class StructureGenTreeTall extends StructureGenTree
+public class ShapeGenTreeInvTeardrop extends ShapeGenTree
 {
-   public static final StructureGenTree instance = new StructureGenTreeTall();
+   public static final ShapeGenTree instance = new ShapeGenTreeInvTeardrop();
    
    protected int height(Random rand)
    {
-      return rand.nextInt(2) + 8;
+      return rand.nextInt(2) + 4;
    }
    
    protected boolean check(World world, int x, int y, int z, int height)
@@ -37,7 +37,7 @@ public class StructureGenTreeTall extends StructureGenTree
             checkPlanarDist = 0;
          }
          
-         if (checkY >= y + 1 + height - 4)
+         if (checkY >= y + 1 + height - 2)
          {
             checkPlanarDist = 2;
          }
@@ -68,12 +68,11 @@ public class StructureGenTreeTall extends StructureGenTree
       world.setBlock(x, y - 1, z, Blocks.dirt);
       int genY, genX, genZ, leafLayer, leafSpread;
       Block genPosBlock;
-      int numLeafLayers = rand.nextInt(2) + 5;
       
-      for (genY = y - numLeafLayers + height; genY <= y + height; genY++)
+      for (genY = y - 3 + height; genY <= y + height + 1; genY++)
       {
          leafLayer = genY - (y + height);
-         leafSpread = leafLayer < -1 ? 2 : 1;
+         leafSpread = leafLayer == 1 ? 1 : 1 + (3 + leafLayer) / 2;
          
          for (genX = x - leafSpread; genX <= x + leafSpread; genX++)
          {
@@ -85,8 +84,8 @@ public class StructureGenTreeTall extends StructureGenTree
                Block block = world.getBlock(genX, genY, genZ);
                
                if ((Math.abs(placeX) != leafSpread
-                        || Math.abs(placeZ) != leafSpread ||
-                        (leafLayer == -1 && rand.nextInt(2) == 0))
+                        || Math.abs(placeZ) != leafSpread || rand.nextInt(2) != 0
+                        && leafLayer == -2)
                         && (world.isAirBlock(genX, genY, genZ) || block
                                  .canBeReplacedByLeaves(world, genX,
                                           genY, genZ)))

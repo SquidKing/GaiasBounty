@@ -1,4 +1,4 @@
-package gaiasbounty.world.gen.tree;
+package gaiasbounty.world.gen.shape;
 
 import java.util.Random;
 
@@ -6,23 +6,13 @@ import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
 import net.minecraft.world.World;
 
-public class StructureGenTreeSapInvTeardrop extends StructureGenTree
+public class ShapeGenTreeTropicalFlat extends ShapeGenTree
 {
-   public static final StructureGenTree instance = new StructureGenTreeSapInvTeardrop();
-   
-   private Block sapBlock;
-   private int[] sapMeta;
-   
-   public StructureGenTree setSapBlock(Block sapBlock, int ... sapMeta)
-   {
-      this.sapBlock = sapBlock;
-      this.sapMeta = sapMeta;
-      return this;
-   }
+   public static final ShapeGenTree instance = new ShapeGenTreeTropicalFlat();
    
    protected int height(Random rand)
    {
-      return rand.nextInt(2) + 4;
+      return rand.nextInt(1) + 4;
    }
    
    protected boolean check(World world, int x, int y, int z, int height)
@@ -47,7 +37,7 @@ public class StructureGenTreeSapInvTeardrop extends StructureGenTree
             checkPlanarDist = 0;
          }
          
-         if (checkY >= y + 1 + height - 2)
+         if (checkY >= y + 1 + height - 1)
          {
             checkPlanarDist = 2;
          }
@@ -79,10 +69,10 @@ public class StructureGenTreeSapInvTeardrop extends StructureGenTree
       int genY, genX, genZ, leafLayer, leafSpread;
       Block genPosBlock;
       
-      for (genY = y - 3 + height; genY <= y + height + 1; genY++)
+      for (genY = y - 2 + height; genY <= y + height; genY++)
       {
          leafLayer = genY - (y + height);
-         leafSpread = leafLayer == 1 ? 1 : 1 + (3 + leafLayer) / 2;
+         leafSpread = leafLayer == -2 ? 2 : leafLayer * -2 + 1;
          
          for (genX = x - leafSpread; genX <= x + leafSpread; genX++)
          {
@@ -95,7 +85,8 @@ public class StructureGenTreeSapInvTeardrop extends StructureGenTree
                
                if ((Math.abs(placeX) != leafSpread
                         || Math.abs(placeZ) != leafSpread || rand.nextInt(2) != 0
-                        && leafLayer == -2)
+                        && leafLayer != -1)
+                        && (Math.abs(placeX) + Math.abs(placeZ) < 5)
                         && (world.isAirBlock(genX, genY, genZ) || block
                                  .canBeReplacedByLeaves(world, genX,
                                           genY, genZ)))
@@ -113,11 +104,7 @@ public class StructureGenTreeSapInvTeardrop extends StructureGenTree
          if (world.isAirBlock(x, y + genY, z)
                   || genPosBlock.isLeaves(world, x, y + genY, z))
          {
-            if (genY == 1)
-               world.setBlock(x, y + genY, z, this.sapBlock,
-                        this.sapMeta[rand.nextInt(this.sapMeta.length)], 2);
-            else
-               world.setBlock(x, y + genY, z, logBlock, logMeta, 2);
+            world.setBlock(x, y + genY, z, logBlock, logMeta, 2);
          }
       }
    }

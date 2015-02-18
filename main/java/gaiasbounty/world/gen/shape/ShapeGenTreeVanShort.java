@@ -1,4 +1,4 @@
-package gaiasbounty.world.gen.tree;
+package gaiasbounty.world.gen.shape;
 
 import java.util.Random;
 
@@ -6,13 +6,13 @@ import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
 import net.minecraft.world.World;
 
-public class StructureGenTreeTropFlat extends StructureGenTree
+public class ShapeGenTreeVanShort extends ShapeGenTree
 {
-   public static final StructureGenTree instance = new StructureGenTreeTropFlat();
+   public static final ShapeGenTree instance = new ShapeGenTreeVanShort();
    
    protected int height(Random rand)
    {
-      return rand.nextInt(1) + 4;
+      return rand.nextInt(2) + 4;
    }
    
    protected boolean check(World world, int x, int y, int z, int height)
@@ -37,7 +37,7 @@ public class StructureGenTreeTropFlat extends StructureGenTree
             checkPlanarDist = 0;
          }
          
-         if (checkY >= y + 1 + height - 1)
+         if (checkY >= y + 1 + height - 2)
          {
             checkPlanarDist = 2;
          }
@@ -69,10 +69,10 @@ public class StructureGenTreeTropFlat extends StructureGenTree
       int genY, genX, genZ, leafLayer, leafSpread;
       Block genPosBlock;
       
-      for (genY = y - 2 + height; genY <= y + height; genY++)
+      for (genY = y - 3 + height; genY <= y + height; genY++)
       {
          leafLayer = genY - (y + height);
-         leafSpread = leafLayer == -2 ? 2 : leafLayer * -2 + 1;
+         leafSpread = 1 - leafLayer / 2;
          
          for (genX = x - leafSpread; genX <= x + leafSpread; genX++)
          {
@@ -85,8 +85,7 @@ public class StructureGenTreeTropFlat extends StructureGenTree
                
                if ((Math.abs(placeX) != leafSpread
                         || Math.abs(placeZ) != leafSpread || rand.nextInt(2) != 0
-                        && leafLayer != -1)
-                        && (Math.abs(placeX) + Math.abs(placeZ) < 5)
+                        && leafLayer != 0)
                         && (world.isAirBlock(genX, genY, genZ) || block
                                  .canBeReplacedByLeaves(world, genX,
                                           genY, genZ)))

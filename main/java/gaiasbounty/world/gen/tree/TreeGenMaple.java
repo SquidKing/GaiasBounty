@@ -1,6 +1,7 @@
 package gaiasbounty.world.gen.tree;
 
 import gaiasbounty.block.BlockManager;
+import gaiasbounty.world.gen.shape.ShapeGenTreeSapBig;
 
 import java.util.Random;
 
@@ -12,7 +13,7 @@ public class TreeGenMaple extends WorldGenerator
    @Override
    public boolean generate(World world, Random rand, int x, int y, int z)
    {
-      return ((StructureGenTreeSapBig) StructureGenTreeSapBig.instance)
+      return ((ShapeGenTreeSapBig) ShapeGenTreeSapBig.instance)
                .setSapBlock(BlockManager.logsSap, 12, 13, 14, 15).generate(
                         world, rand, x, y, z, BlockManager.logs6, 3,
                         BlockManager.leaves6, 3);

@@ -1,4 +1,4 @@
-package gaiasbounty.world.gen.tree;
+package gaiasbounty.world.gen.shape;
 
 import java.util.Random;
 
@@ -6,13 +6,13 @@ import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
 import net.minecraft.world.World;
 
-public class StructureGenTreeVanShort extends StructureGenTree
+public class ShapeGenTreeBall extends ShapeGenTree
 {
-   public static final StructureGenTree instance = new StructureGenTreeVanShort();
+   public static final ShapeGenTree instance = new ShapeGenTreeBall();
    
    protected int height(Random rand)
    {
-      return rand.nextInt(2) + 4;
+      return rand.nextInt(3) + 5;
    }
    
    protected boolean check(World world, int x, int y, int z, int height)
@@ -72,7 +72,7 @@ public class StructureGenTreeVanShort extends StructureGenTree
       for (genY = y - 3 + height; genY <= y + height; genY++)
       {
          leafLayer = genY - (y + height);
-         leafSpread = 1 - leafLayer / 2;
+         leafSpread = leafLayer < -1 ? (leafLayer + 4) : -leafLayer + 1;
          
          for (genX = x - leafSpread; genX <= x + leafSpread; genX++)
          {

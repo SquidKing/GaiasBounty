@@ -1,6 +1,7 @@
 package gaiasbounty.world.gen.tree;
 
 import gaiasbounty.block.BlockManager;
+import gaiasbounty.world.gen.shape.ShapeGenTreeTall;
 
 import java.util.Random;
 
@@ -12,7 +13,7 @@ public class TreeGenMacadamia extends WorldGenerator
    @Override
    public boolean generate(World world, Random rand, int x, int y, int z)
    {
-      return StructureGenTreeTall.instance.generate(world, rand, x, y, z,
+      return ShapeGenTreeTall.instance.generate(world, rand, x, y, z,
                BlockManager.logs5, 0, BlockManager.leaves5, 0);
    }
 }

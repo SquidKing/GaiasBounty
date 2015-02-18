@@ -1,4 +1,4 @@
-package gaiasbounty.world.gen.tree;
+package gaiasbounty.world.gen.shape;
 
 import java.util.Random;
 
@@ -6,13 +6,23 @@ import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
 import net.minecraft.world.World;
 
-public class StructureGenTreeVanilla extends StructureGenTree
+public class ShapeGenTreeSapBig extends ShapeGenTree
 {
-   public static final StructureGenTree instance = new StructureGenTreeVanilla();
+   public static final ShapeGenTree instance = new ShapeGenTreeSapBig();
+   
+   private Block sapBlock;
+   private int[] sapMeta;
+   
+   public ShapeGenTree setSapBlock(Block sapBlock, int ... sapMeta)
+   {
+      this.sapBlock = sapBlock;
+      this.sapMeta = sapMeta;
+      return this;
+   }
    
    protected int height(Random rand)
    {
-      return rand.nextInt(2) + 5;
+      return rand.nextInt(2) + 8;
    }
    
    protected boolean check(World world, int x, int y, int z, int height)
@@ -37,9 +47,9 @@ public class StructureGenTreeVanilla extends StructureGenTree
             checkPlanarDist = 0;
          }
          
-         if (checkY >= y + 1 + height - 2)
+         if (checkY >= y + 1 + height - 4)
          {
-            checkPlanarDist = 2;
+            checkPlanarDist = 3;
          }
          
          for (checkX = x - checkPlanarDist; checkX <= x + checkPlanarDist; ++checkX)
@@ -68,11 +78,13 @@ public class StructureGenTreeVanilla extends StructureGenTree
       world.setBlock(x, y - 1, z, Blocks.dirt);
       int genY, genX, genZ, leafLayer, leafSpread;
       Block genPosBlock;
+      int numLeafLayers = rand.nextInt(2) + 5;
       
-      for (genY = y - 3 + height; genY <= y + height; genY++)
+      for (genY = y - numLeafLayers + height; genY <= y + height; genY++)
       {
          leafLayer = genY - (y + height);
-         leafSpread = 1 - leafLayer / 2;
+         leafSpread = leafLayer == -numLeafLayers ? 2
+                  : (leafLayer < -2 ? 3 : 1 - (leafLayer - 1) / 2);
          
          for (genX = x - leafSpread; genX <= x + leafSpread; genX++)
          {
@@ -85,7 +97,8 @@ public class StructureGenTreeVanilla extends StructureGenTree
                
                if ((Math.abs(placeX) != leafSpread
                         || Math.abs(placeZ) != leafSpread || rand.nextInt(2) != 0
-                        && leafLayer != 0)
+                        && (leafLayer == -2 || leafLayer == -numLeafLayers))
+                        && (Math.abs(placeX) + Math.abs(placeZ) < 5)
                         && (world.isAirBlock(genX, genY, genZ) || block
                                  .canBeReplacedByLeaves(world, genX,
                                           genY, genZ)))
@@ -103,7 +116,11 @@ public class StructureGenTreeVanilla extends StructureGenTree
          if (world.isAirBlock(x, y + genY, z)
                   || genPosBlock.isLeaves(world, x, y + genY, z))
          {
-            world.setBlock(x, y + genY, z, logBlock, logMeta, 2);
+            if (genY == 1)
+               world.setBlock(x, y + genY, z, this.sapBlock,
+                        this.sapMeta[rand.nextInt(this.sapMeta.length)], 2);
+            else
+               world.setBlock(x, y + genY, z, logBlock, logMeta, 2);
          }
       }
    }

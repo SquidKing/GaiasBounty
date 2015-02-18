@@ -1,13 +1,13 @@
-package gaiasbounty.world.gen.tree;
+package gaiasbounty.world.gen.shape;
 
 import java.util.Random;
 
 import net.minecraft.block.Block;
 import net.minecraft.world.World;
 
-public abstract class StructureGenTree
+public abstract class ShapeGenTree
 {
-   protected StructureGenTree() {}
+   protected ShapeGenTree() {}
    
    public boolean generate(World world, Random rand, int x, int y, int z,
             Block logBlock, int logMeta, Block leafBlock, int leafMeta)
