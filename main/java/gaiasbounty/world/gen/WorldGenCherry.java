@@ -13,7 +13,7 @@ import net.minecraftforge.common.BiomeDictionary.Type;
 import cpw.mods.fml.common.IWorldGenerator;
 
 /**
- * Creates cherry trees during chunk gen. Cherry trees can grow in non-snowy hill and mountain biomes.
+ * Creates cherry trees during chunk gen. Cherry trees can grow in hill and mountain biomes.
  * 
  * @author Alex Smith
  */
@@ -28,9 +28,8 @@ public class WorldGenCherry implements IWorldGenerator
       BiomeGenBase biome = world.getBiomeGenForCoords(chunkX * 16 + 8,
                chunkZ * 16 + 8);
 
-      if (rand.nextInt(20) == 0 && (BiomeDictionary.isBiomeOfType(biome, Type.HILLS)
-                                || BiomeDictionary.isBiomeOfType(biome, Type.MOUNTAIN))
-    		                    && !BiomeDictionary.isBiomeOfType(biome, Type.SNOWY))
+      if (rand.nextInt(30) == 0 && (BiomeDictionary.isBiomeOfType(biome, Type.HILLS)
+                                || BiomeDictionary.isBiomeOfType(biome, Type.MOUNTAIN)))
       {
          int x, y, z;
          

@@ -1,6 +1,6 @@
 package gaiasbounty.world.gen;
 
-import gaiasbounty.world.gen.tree.TreeGenApple;
+import gaiasbounty.world.gen.tree.TreeGenLime;
 
 import java.util.Random;
 
@@ -13,14 +13,14 @@ import net.minecraftforge.common.BiomeDictionary.Type;
 import cpw.mods.fml.common.IWorldGenerator;
 
 /**
- * Creates apple trees during chunk gen. Apple trees can grow in temperate or cold non-coniferous forest biomes.
+ * Creates lime trees during chunk gen. Lime trees can grow in swamp or ocean biomes.
  * 
  * @author Alex Smith
  */
-public class WorldGenApple implements IWorldGenerator
+public class WorldGenLime implements IWorldGenerator
 {
-   private static final WorldGenerator generator = new TreeGenApple();
-   
+   private static final WorldGenerator generator = new TreeGenLime();
+
    @Override
    public void generate(Random rand, int chunkX, int chunkZ, World world,
             IChunkProvider chunkGenerator, IChunkProvider chunkProvider)
@@ -28,9 +28,8 @@ public class WorldGenApple implements IWorldGenerator
       BiomeGenBase biome = world.getBiomeGenForCoords(chunkX * 16 + 8,
                chunkZ * 16 + 8);
 
-      if (rand.nextInt(30) == 0 && BiomeDictionary.isBiomeOfType(biome, Type.FOREST)
-    		                    && !(BiomeDictionary.isBiomeOfType(biome, Type.HOT)
-    		                    || BiomeDictionary.isBiomeOfType(biome, Type.CONIFEROUS)))
+      if (rand.nextInt(30) == 0 && (BiomeDictionary.isBiomeOfType(biome, Type.SWAMP)
+    		                    || BiomeDictionary.isBiomeOfType(biome, Type.OCEAN)))
       {
          int x, y, z;
          

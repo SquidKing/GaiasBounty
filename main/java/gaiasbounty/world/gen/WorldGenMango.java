@@ -1,6 +1,6 @@
 package gaiasbounty.world.gen;
 
-import gaiasbounty.world.gen.tree.TreeGenApple;
+import gaiasbounty.world.gen.tree.TreeGenMango;
 
 import java.util.Random;
 
@@ -13,13 +13,13 @@ import net.minecraftforge.common.BiomeDictionary.Type;
 import cpw.mods.fml.common.IWorldGenerator;
 
 /**
- * Creates apple trees during chunk gen. Apple trees can grow in temperate or cold non-coniferous forest biomes.
+ * Creates mango trees during chunk gen. Mango trees can grow in jungle biomes.
  * 
  * @author Alex Smith
  */
-public class WorldGenApple implements IWorldGenerator
+public class WorldGenMango implements IWorldGenerator
 {
-   private static final WorldGenerator generator = new TreeGenApple();
+   private static final WorldGenerator generator = new TreeGenMango();
    
    @Override
    public void generate(Random rand, int chunkX, int chunkZ, World world,
@@ -28,9 +28,7 @@ public class WorldGenApple implements IWorldGenerator
       BiomeGenBase biome = world.getBiomeGenForCoords(chunkX * 16 + 8,
                chunkZ * 16 + 8);
 
-      if (rand.nextInt(30) == 0 && BiomeDictionary.isBiomeOfType(biome, Type.FOREST)
-    		                    && !(BiomeDictionary.isBiomeOfType(biome, Type.HOT)
-    		                    || BiomeDictionary.isBiomeOfType(biome, Type.CONIFEROUS)))
+      if (rand.nextInt(30) == 0 && BiomeDictionary.isBiomeOfType(biome, Type.JUNGLE))
       {
          int x, y, z;
          
