@@ -1,6 +1,6 @@
 package gaiasbounty.world.gen;
 
-import gaiasbounty.world.gen.tree.TreeGenLime;
+import gaiasbounty.world.gen.tree.TreeGenMaple;
 
 import java.util.Random;
 
@@ -10,18 +10,19 @@ import net.minecraftforge.common.BiomeDictionary;
 import net.minecraftforge.common.BiomeDictionary.Type;
 
 /**
- * Creates lime trees during chunk gen. Lime trees can grow in ocean or swamp biomes.
+ * Creates maple trees during chunk gen. Maple trees can grow in temperate or cold non-snowy, non-dry forest biomes.
  * 
  * @author Alex Smith
  */
-public class WorldGenLime extends WorldGenTreeBase
+public class WorldGenMaple extends WorldGenTreeBase
 {
-   private static final WorldGenerator GENERATOR = new TreeGenLime();
+   private static final WorldGenerator GENERATOR = new TreeGenMaple();
 
    @Override
    public boolean isValidSpawnBiome(BiomeGenBase biome)
    {
-      return BiomeDictionary.isBiomeOfType(biome, Type.OCEAN) || BiomeDictionary.isBiomeOfType(biome, Type.SWAMP);
+      return BiomeDictionary.isBiomeOfType(biome, Type.FOREST) && !(BiomeDictionary.isBiomeOfType(biome, Type.HOT)
+          || BiomeDictionary.isBiomeOfType(biome, Type.DRY) || BiomeDictionary.isBiomeOfType(biome, Type.SNOWY));
    }
 
    @Override

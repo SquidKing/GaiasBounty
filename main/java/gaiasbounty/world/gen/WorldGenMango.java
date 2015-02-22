@@ -4,45 +4,36 @@ import gaiasbounty.world.gen.tree.TreeGenMango;
 
 import java.util.Random;
 
-import net.minecraft.world.World;
 import net.minecraft.world.biome.BiomeGenBase;
-import net.minecraft.world.chunk.IChunkProvider;
 import net.minecraft.world.gen.feature.WorldGenerator;
 import net.minecraftforge.common.BiomeDictionary;
 import net.minecraftforge.common.BiomeDictionary.Type;
-import cpw.mods.fml.common.IWorldGenerator;
 
 /**
- * Creates mango trees during chunk gen. Mango trees can grow in jungle biomes.
+ * Creates mango trees during chunk gen. Mango trees can grow in hot, humid jungle biomes.
  * 
  * @author Alex Smith
  */
-public class WorldGenMango implements IWorldGenerator
+public class WorldGenMango extends WorldGenTreeBase
 {
-   private static final WorldGenerator generator = new TreeGenMango();
-   
+   private static final WorldGenerator GENERATOR = new TreeGenMango();
+
    @Override
-   public void generate(Random rand, int chunkX, int chunkZ, World world,
-            IChunkProvider chunkGenerator, IChunkProvider chunkProvider)
+   public boolean isValidSpawnBiome(BiomeGenBase biome)
    {
-      BiomeGenBase biome = world.getBiomeGenForCoords(chunkX * 16 + 8,
-               chunkZ * 16 + 8);
+      return BiomeDictionary.isBiomeOfType(biome, Type.JUNGLE) && BiomeDictionary.isBiomeOfType(biome, Type.HOT)
+          && BiomeDictionary.isBiomeOfType(biome, Type.WET);
+   }
 
-      if (rand.nextInt(30) == 0 && BiomeDictionary.isBiomeOfType(biome, Type.JUNGLE))
-      {
-         int x, y, z;
-         
-         for (int i = 0; i < 20; i++)
-         {
-            x = chunkX * 16 + rand.nextInt(16);
-            z = chunkZ * 16 + rand.nextInt(16);
-            y = world.getTopSolidOrLiquidBlock(x, z) - 1;
+   @Override
+   public boolean canDoSpawn(Random random)
+   {
+      return 0 == random.nextInt(30);
+   }
 
-            if (generator.generate(world, rand, x, y + 1, z))
-            {
-               break;
-            }
-         }
-      }
+   @Override
+   protected WorldGenerator getGenerator()
+   {
+      return GENERATOR;
    }
 }

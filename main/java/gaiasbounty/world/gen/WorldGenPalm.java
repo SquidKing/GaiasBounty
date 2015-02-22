@@ -1,6 +1,6 @@
 package gaiasbounty.world.gen;
 
-import gaiasbounty.world.gen.tree.TreeGenBanana;
+import gaiasbounty.world.gen.tree.TreeGenPalm;
 
 import java.util.Random;
 
@@ -10,19 +10,19 @@ import net.minecraftforge.common.BiomeDictionary;
 import net.minecraftforge.common.BiomeDictionary.Type;
 
 /**
- * Creates banana trees during chunk gen. Banana trees can grow in hot, humid jungle biomes.
+ * Creates palm trees during chunk gen. Palm trees can grow in temperate or hot ocean or sandy beach biomes.
  * 
  * @author Alex Smith
  */
-public class WorldGenBanana extends WorldGenTreeBase
+public class WorldGenPalm extends WorldGenTreeBase
 {
-   private static final WorldGenerator GENERATOR = new TreeGenBanana();
+   private static final WorldGenerator GENERATOR = new TreeGenPalm();
 
    @Override
    public boolean isValidSpawnBiome(BiomeGenBase biome)
    {
-      return BiomeDictionary.isBiomeOfType(biome, Type.JUNGLE) && BiomeDictionary.isBiomeOfType(biome, Type.HOT)
-          && BiomeDictionary.isBiomeOfType(biome, Type.WET);
+      return !BiomeDictionary.isBiomeOfType(biome, Type.COLD) && (BiomeDictionary.isBiomeOfType(biome, Type.OCEAN)
+           || (BiomeDictionary.isBiomeOfType(biome, Type.BEACH) && BiomeDictionary.isBiomeOfType(biome, Type.SANDY)));
    }
 
    @Override

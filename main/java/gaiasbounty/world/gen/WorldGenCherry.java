@@ -4,46 +4,36 @@ import gaiasbounty.world.gen.tree.TreeGenCherry;
 
 import java.util.Random;
 
-import net.minecraft.world.World;
 import net.minecraft.world.biome.BiomeGenBase;
-import net.minecraft.world.chunk.IChunkProvider;
 import net.minecraft.world.gen.feature.WorldGenerator;
 import net.minecraftforge.common.BiomeDictionary;
 import net.minecraftforge.common.BiomeDictionary.Type;
-import cpw.mods.fml.common.IWorldGenerator;
 
 /**
- * Creates cherry trees during chunk gen. Cherry trees can grow in hill and mountain biomes.
+ * Creates cherry trees during chunk gen. Cherry trees can grow in temperate or cold hill or mountain biomes.
  * 
  * @author Alex Smith
  */
-public class WorldGenCherry implements IWorldGenerator
+public class WorldGenCherry extends WorldGenTreeBase
 {
-   private static final WorldGenerator generator = new TreeGenCherry();
-   
+   private static final WorldGenerator GENERATOR = new TreeGenCherry();
+
    @Override
-   public void generate(Random rand, int chunkX, int chunkZ, World world,
-            IChunkProvider chunkGenerator, IChunkProvider chunkProvider)
+   public boolean isValidSpawnBiome(BiomeGenBase biome)
    {
-      BiomeGenBase biome = world.getBiomeGenForCoords(chunkX * 16 + 8,
-               chunkZ * 16 + 8);
+      return (BiomeDictionary.isBiomeOfType(biome, Type.HILLS) || BiomeDictionary.isBiomeOfType(biome, Type.MOUNTAIN))
+          && !BiomeDictionary.isBiomeOfType(biome, Type.HOT);
+   }
 
-      if (rand.nextInt(30) == 0 && (BiomeDictionary.isBiomeOfType(biome, Type.HILLS)
-                                || BiomeDictionary.isBiomeOfType(biome, Type.MOUNTAIN)))
-      {
-         int x, y, z;
-         
-         for (int i = 0; i < 20; i++)
-         {
-            x = chunkX * 16 + rand.nextInt(16);
-            z = chunkZ * 16 + rand.nextInt(16);
-            y = world.getTopSolidOrLiquidBlock(x, z) - 1;
+   @Override
+   public boolean canDoSpawn(Random random)
+   {
+      return 0 == random.nextInt(30);
+   }
 
-            if (generator.generate(world, rand, x, y + 1, z))
-            {
-               break;
-            }
-         }
-      }
+   @Override
+   protected WorldGenerator getGenerator()
+   {
+      return GENERATOR;
    }
 }

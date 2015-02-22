@@ -4,45 +4,38 @@ import gaiasbounty.world.gen.tree.TreeGenMesquite;
 
 import java.util.Random;
 
-import net.minecraft.world.World;
 import net.minecraft.world.biome.BiomeGenBase;
-import net.minecraft.world.chunk.IChunkProvider;
 import net.minecraft.world.gen.feature.WorldGenerator;
 import net.minecraftforge.common.BiomeDictionary;
 import net.minecraftforge.common.BiomeDictionary.Type;
-import cpw.mods.fml.common.IWorldGenerator;
 
 /**
- * Creates mesquite trees during chunk gen. Mesquite trees can grow in mesa biomes.
+ * Creates mesquite trees during chunk gen. Mesquite trees can grow in savannah, mesa, or plains biomes.
  * 
  * @author Alex Smith
  */
-public class WorldGenMesquite implements IWorldGenerator
+public class WorldGenMesquite extends WorldGenTreeBase
 {
-   private static final WorldGenerator generator = new TreeGenMesquite();
-   
-   @Override
-   public void generate(Random rand, int chunkX, int chunkZ, World world,
-            IChunkProvider chunkGenerator, IChunkProvider chunkProvider)
-   {
-      BiomeGenBase biome = world.getBiomeGenForCoords(chunkX * 16 + 8,
-               chunkZ * 16 + 8);
-      
-      if (rand.nextInt(20) == 0 && BiomeDictionary.isBiomeOfType(biome, Type.MESA))
-      {
-         int x, y, z;
-         
-         for (int i = 0; i < 20; i++)
-         {
-            x = chunkX * 16 + rand.nextInt(16);
-            z = chunkZ * 16 + rand.nextInt(16);
-            y = world.getTopSolidOrLiquidBlock(x, z) - 1;
+   private static final WorldGenerator GENERATOR = new TreeGenMesquite();
 
-            if (generator.generate(world, rand, x, y + 1, z))
-            {
-               break;
-            }
-         }
-      }
+   @Override
+   public boolean isValidSpawnBiome(BiomeGenBase biome)
+   {
+      return !(BiomeDictionary.isBiomeOfType(biome, Type.COLD) || BiomeDictionary.isBiomeOfType(biome, Type.WET))
+          && (BiomeDictionary.isBiomeOfType(biome, Type.DRY) || BiomeDictionary.isBiomeOfType(biome, Type.HOT)
+          || BiomeDictionary.isBiomeOfType(biome, Type.SPARSE)) && (BiomeDictionary.isBiomeOfType(biome, Type.PLAINS)
+          || BiomeDictionary.isBiomeOfType(biome, Type.SAVANNA) || BiomeDictionary.isBiomeOfType(biome, Type.MESA));
+   }
+
+   @Override
+   public boolean canDoSpawn(Random random)
+   {
+      return 0 == random.nextInt(30);
+   }
+
+   @Override
+   protected WorldGenerator getGenerator()
+   {
+      return GENERATOR;
    }
 }

@@ -1,6 +1,6 @@
 package gaiasbounty.world.gen;
 
-import gaiasbounty.world.gen.tree.TreeGenBanana;
+import gaiasbounty.world.gen.tree.TreeGenHazelnut;
 
 import java.util.Random;
 
@@ -10,25 +10,25 @@ import net.minecraftforge.common.BiomeDictionary;
 import net.minecraftforge.common.BiomeDictionary.Type;
 
 /**
- * Creates banana trees during chunk gen. Banana trees can grow in hot, humid jungle biomes.
+ * Creates hazelnut trees during chunk gen. Hazelnut trees can grow in non-hot, non-wet forest biomes.
  * 
  * @author Alex Smith
  */
-public class WorldGenBanana extends WorldGenTreeBase
+public class WorldGenHazelnut extends WorldGenTreeBase
 {
-   private static final WorldGenerator GENERATOR = new TreeGenBanana();
+   private static final WorldGenerator GENERATOR = new TreeGenHazelnut();
 
    @Override
    public boolean isValidSpawnBiome(BiomeGenBase biome)
    {
-      return BiomeDictionary.isBiomeOfType(biome, Type.JUNGLE) && BiomeDictionary.isBiomeOfType(biome, Type.HOT)
-          && BiomeDictionary.isBiomeOfType(biome, Type.WET);
+      return BiomeDictionary.isBiomeOfType(biome, Type.FOREST) && !(BiomeDictionary.isBiomeOfType(biome, Type.HOT)
+          || BiomeDictionary.isBiomeOfType(biome, Type.WET));
    }
 
    @Override
    public boolean canDoSpawn(Random random)
    {
-      return 0 == random.nextInt(20);
+      return 0 == random.nextInt(30);
    }
 
    @Override

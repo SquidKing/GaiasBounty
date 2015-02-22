@@ -4,46 +4,37 @@ import gaiasbounty.world.gen.tree.TreeGenOrange;
 
 import java.util.Random;
 
-import net.minecraft.world.World;
 import net.minecraft.world.biome.BiomeGenBase;
-import net.minecraft.world.chunk.IChunkProvider;
 import net.minecraft.world.gen.feature.WorldGenerator;
 import net.minecraftforge.common.BiomeDictionary;
 import net.minecraftforge.common.BiomeDictionary.Type;
-import cpw.mods.fml.common.IWorldGenerator;
 
 /**
- * Creates orange trees during chunk gen. Orange trees can grow in jungle or swamp biomes.
+ * Creates orange trees during chunk gen. Orange trees can grow in humid and hot or temperate forests, jungles, or swamps.
  * 
  * @author Alex Smith
  */
-public class WorldGenOrange implements IWorldGenerator
+public class WorldGenOrange extends WorldGenTreeBase
 {
-   private static final WorldGenerator generator = new TreeGenOrange();
-   
+   private static final WorldGenerator GENERATOR = new TreeGenOrange();
+
    @Override
-   public void generate(Random rand, int chunkX, int chunkZ, World world,
-            IChunkProvider chunkGenerator, IChunkProvider chunkProvider)
+   public boolean isValidSpawnBiome(BiomeGenBase biome)
    {
-      BiomeGenBase biome = world.getBiomeGenForCoords(chunkX * 16 + 8,
-               chunkZ * 16 + 8);
+      return (BiomeDictionary.isBiomeOfType(biome, Type.FOREST) || BiomeDictionary.isBiomeOfType(biome, Type.JUNGLE)
+          || BiomeDictionary.isBiomeOfType(biome, Type.SWAMP)) && BiomeDictionary.isBiomeOfType(biome, Type.WET)
+          && !BiomeDictionary.isBiomeOfType(biome, Type.COLD);
+   }
 
-      if (rand.nextInt(30) == 0 && (BiomeDictionary.isBiomeOfType(biome, Type.JUNGLE)
-    		                    || BiomeDictionary.isBiomeOfType(biome, Type.SWAMP)))
-      {
-         int x, y, z;
-         
-         for (int i = 0; i < 20; i++)
-         {
-            x = chunkX * 16 + rand.nextInt(16);
-            z = chunkZ * 16 + rand.nextInt(16);
-            y = world.getTopSolidOrLiquidBlock(x, z) - 1;
+   @Override
+   public boolean canDoSpawn(Random random)
+   {
+      return 0 == random.nextInt(30);
+   }
 
-            if (generator.generate(world, rand, x, y + 1, z))
-            {
-               break;
-            }
-         }
-      }
+   @Override
+   protected WorldGenerator getGenerator()
+   {
+      return GENERATOR;
    }
 }

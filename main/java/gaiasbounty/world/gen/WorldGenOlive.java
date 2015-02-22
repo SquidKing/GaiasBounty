@@ -1,6 +1,6 @@
 package gaiasbounty.world.gen;
 
-import gaiasbounty.world.gen.tree.TreeGenBanana;
+import gaiasbounty.world.gen.tree.TreeGenOlive;
 
 import java.util.Random;
 
@@ -10,25 +10,24 @@ import net.minecraftforge.common.BiomeDictionary;
 import net.minecraftforge.common.BiomeDictionary.Type;
 
 /**
- * Creates banana trees during chunk gen. Banana trees can grow in hot, humid jungle biomes.
+ * Creates olive trees during chunk gen. Olive trees can grow in coniferous forest biomes.
  * 
  * @author Alex Smith
  */
-public class WorldGenBanana extends WorldGenTreeBase
+public class WorldGenOlive extends WorldGenTreeBase
 {
-   private static final WorldGenerator GENERATOR = new TreeGenBanana();
+   private static final WorldGenerator GENERATOR = new TreeGenOlive();
 
    @Override
    public boolean isValidSpawnBiome(BiomeGenBase biome)
    {
-      return BiomeDictionary.isBiomeOfType(biome, Type.JUNGLE) && BiomeDictionary.isBiomeOfType(biome, Type.HOT)
-          && BiomeDictionary.isBiomeOfType(biome, Type.WET);
+      return BiomeDictionary.isBiomeOfType(biome, Type.FOREST) && BiomeDictionary.isBiomeOfType(biome, Type.CONIFEROUS);
    }
 
    @Override
    public boolean canDoSpawn(Random random)
    {
-      return 0 == random.nextInt(20);
+      return 0 == random.nextInt(30);
    }
 
    @Override

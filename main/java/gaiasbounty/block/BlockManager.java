@@ -57,7 +57,7 @@ public class BlockManager
    public static String[] tree5Subtypes =
       { "macadamia", "mesquite", "olive", "palm" };
    public static String[] tree6Subtypes =
-            { "sassafras", "tea", "rubber", "maple" };
+      { "sassafras", "tea", "rubber", "maple" };
    
    public static String[] planks1Subtypes =
       { "apple", "peach", "cherry", "banana", "orange", "lemon", "lime",

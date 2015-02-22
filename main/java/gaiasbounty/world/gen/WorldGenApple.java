@@ -4,47 +4,37 @@ import gaiasbounty.world.gen.tree.TreeGenApple;
 
 import java.util.Random;
 
-import net.minecraft.world.World;
 import net.minecraft.world.biome.BiomeGenBase;
-import net.minecraft.world.chunk.IChunkProvider;
 import net.minecraft.world.gen.feature.WorldGenerator;
 import net.minecraftforge.common.BiomeDictionary;
 import net.minecraftforge.common.BiomeDictionary.Type;
-import cpw.mods.fml.common.IWorldGenerator;
 
 /**
  * Creates apple trees during chunk gen. Apple trees can grow in temperate or cold non-coniferous forest biomes.
  * 
  * @author Alex Smith
  */
-public class WorldGenApple implements IWorldGenerator
+public class WorldGenApple extends WorldGenTreeBase
 {
-   private static final WorldGenerator generator = new TreeGenApple();
-   
+   private static final WorldGenerator GENERATOR = new TreeGenApple();
+
    @Override
-   public void generate(Random rand, int chunkX, int chunkZ, World world,
-            IChunkProvider chunkGenerator, IChunkProvider chunkProvider)
+   public boolean isValidSpawnBiome(BiomeGenBase biome)
    {
-      BiomeGenBase biome = world.getBiomeGenForCoords(chunkX * 16 + 8,
-               chunkZ * 16 + 8);
+      return BiomeDictionary.isBiomeOfType(biome, Type.FOREST)
+          && !(BiomeDictionary.isBiomeOfType(biome, Type.HOT) || BiomeDictionary.isBiomeOfType(biome, Type.CONIFEROUS)
+            || BiomeDictionary.isBiomeOfType(biome, Type.SAVANNA) || BiomeDictionary.isBiomeOfType(biome, Type.JUNGLE));
+   }
 
-      if (rand.nextInt(30) == 0 && BiomeDictionary.isBiomeOfType(biome, Type.FOREST)
-    		                    && !(BiomeDictionary.isBiomeOfType(biome, Type.HOT)
-    		                    || BiomeDictionary.isBiomeOfType(biome, Type.CONIFEROUS)))
-      {
-         int x, y, z;
-         
-         for (int i = 0; i < 20; i++)
-         {
-            x = chunkX * 16 + rand.nextInt(16);
-            z = chunkZ * 16 + rand.nextInt(16);
-            y = world.getTopSolidOrLiquidBlock(x, z) - 1;
+   @Override
+   public boolean canDoSpawn(Random random)
+   {
+      return 0 == random.nextInt(30);
+   }
 
-            if (generator.generate(world, rand, x, y + 1, z))
-            {
-               break;
-            }
-         }
-      }
+   @Override
+   protected WorldGenerator getGenerator()
+   {
+      return GENERATOR;
    }
 }

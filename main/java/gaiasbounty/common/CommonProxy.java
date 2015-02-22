@@ -10,6 +10,7 @@ import gaiasbounty.mod.ModManager;
 import gaiasbounty.potion.PotionGB;
 import gaiasbounty.recipe.RecipeManager;
 import gaiasbounty.recipe.SmeltingRecipes;
+import gaiasbounty.tileentity.TileEntityManager;
 import gaiasbounty.village.VillageManager;
 import gaiasbounty.world.WorldGenManager;
 import net.minecraft.entity.EnumCreatureType;
@@ -40,6 +41,7 @@ public class CommonProxy implements IGuiHandler
    {
       this.registerRenderers();
       EntityManager.registerEntities();
+      TileEntityManager.register();
       BlockManager.setBlockMiscData();
       WorldGenManager.init();
       NetworkRegistry.INSTANCE.registerGuiHandler(GaiasBounty.instance, this);
@@ -49,6 +51,7 @@ public class CommonProxy implements IGuiHandler
    public void postInit(FMLPostInitializationEvent event)
    {
       EntityManager.registerEntitySpawn();
+      WorldGenManager.createBiomeAssociations();
       ModManager.init();
    }
    
