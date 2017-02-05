@@ -11,6 +11,6 @@ public class TileEntityManager
 {  
    public static void register()
    {
-      GameRegistry.registerTileEntity(TileEntityCrops.class, "tileEntityGbCrops");
+      //GameRegistry.registerTileEntity(TileEntityCrops.class, "tileEntityGbCrops");
    }
 }

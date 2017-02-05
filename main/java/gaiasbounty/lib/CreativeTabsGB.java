@@ -1,7 +1,5 @@
 package gaiasbounty.lib;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import gaiasbounty.block.BlockManager;
 import gaiasbounty.item.ItemManager;
 import net.minecraft.creativetab.CreativeTabs;

@@ -6,23 +6,22 @@ import java.util.List;
 import java.util.Random;
 
 import net.minecraft.block.Block;
+import net.minecraft.block.IGrowable;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.IIcon;
+import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
-import cpw.mods.fml.common.eventhandler.Event.Result;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class BlockTreeFruit extends Block implements IFertilizeable
+public class BlockTreeFruit extends Block implements IGrowable
 {
-   @SideOnly(Side.CLIENT) private IIcon[] iconArray;
+   @SideOnly(Side.CLIENT) private IIcon[][] icons;
    private String[] fruitTypes;
    private ItemStack[] fruits;
    
@@ -36,6 +35,26 @@ public class BlockTreeFruit extends Block implements IFertilizeable
       this.fruitTypes = fruits;
    }
    
+   public int getGrowthStage(IBlockAccess access, int x, int y, int z)
+   {
+      return this.getGrowthStage(access.getBlockMetadata(x, y, z));
+   }
+   
+   public int getGrowthStage(int meta)
+   {
+      return (meta & 12) >> 2;
+   }
+   
+   public int getFruitType(IBlockAccess access, int x, int y, int z)
+   {
+      return this.getFruitType(access.getBlockMetadata(x, y, z));
+   }
+   
+   public int getFruitType(int meta)
+   {
+      return meta & 3;
+   }
+   
    @Override
    public boolean canBlockStay(World world, int x, int y, int z)
    {
@@ -47,11 +66,8 @@ public class BlockTreeFruit extends Block implements IFertilizeable
    @Override
    public IIcon getIcon(int side, int meta)
    {
-      int growthStage = (meta & 12) >> 2;
-      if (growthStage > 1)
-         growthStage--;
-      int fruitType = meta & 3;
-      return iconArray[((fruitType) * 3) + growthStage];
+      int growthStage = this.getGrowthStage(meta);
+      return icons[this.getFruitType(meta)][growthStage > 1 ? growthStage - 1 : growthStage];
    }
    
    @Override
@@ -108,11 +124,11 @@ public class BlockTreeFruit extends Block implements IFertilizeable
     */
    public boolean growFruit(World world, int x, int y, int z, Random rand, boolean full)
    {
-      int growthStage = (world.getBlockMetadata(x, y, z) & 12) >> 2;
+      int growthStage = this.getGrowthStage(world, x, y, z);
       
       if (growthStage < 3)
       {
-         int fruitType = world.getBlockMetadata(x, y, z) & 3;
+         int fruitType = this.getFruitType(world, x, y, z);
          
          if (full)
          {
@@ -145,30 +161,19 @@ public class BlockTreeFruit extends Block implements IFertilizeable
    @SideOnly(Side.CLIENT)
    public Item getItem(World world, int x, int y, int z)
    {
-      int fruitType = world.getBlockMetadata(x, y, z) & 3;
-      return this.fruits[fruitType].getItem();
+      return this.fruits[this.getFruitType(world, x, y, z)].getItem();
    }
    
    @Override
-   public Item getItemDropped(int meta, Random rand, int par3)
+   public Item getItemDropped(int meta, Random random, int fortune)
    {
-      int growthStage = (meta & 12) >> 2;
-      int fruitType = meta & 3;
-      
-      if (growthStage < 3)
-      {
-         return null;
-      }
-      else
-      {
-         return this.fruits[meta & 3].getItem();
-      }
+      return this.getGrowthStage(meta) < 3 ? null : this.fruits[this.getFruitType(meta)].getItem();
    }
    
    @Override
    public int damageDropped(int meta)
    {
-      return this.fruits[meta & 3].getItemDamage();
+      return this.fruits[this.getFruitType(meta)].getItemDamage();
    }
    
    public void setFruitItems(ItemStack ... newFruits)
@@ -184,27 +189,43 @@ public class BlockTreeFruit extends Block implements IFertilizeable
    @SideOnly(Side.CLIENT)
    public void registerBlockIcons(IIconRegister icons)
    {
-      this.iconArray = new IIcon[this.fruitTypes.length * 3];
+      this.icons = new IIcon[this.fruitTypes.length][3];
       
       for (int i = 0; i < fruitTypes.length; ++i)
       {
          for (int j = 0; j < 3; ++j)
          {
-            this.iconArray[i * 3 + j] = icons
+            this.icons[i][j] = icons
                      .registerIcon(Reference.GB_TEX_PREFIX + "treefruit_" + fruitTypes[i]
                               + "_" + j);
          }
       }
    }
 
+   /**
+    * Returns true if this plant is still growing. If false, it is considered to be fully grown.
+    */
    @Override
-   public boolean fertilize(World world, Random rand, int x, int y, int z)
+   public boolean func_149851_a(World world, int x, int y, int z, boolean isClientSide)
    {
-      if (this.growFruit(world, x, y, z, rand, true))
-      {
-         world.playAuxSFX(2005, x, y, z, 0);
-         return true;
-      }
-      return false;
+      return this.getGrowthStage(world, x, y, z) < 3;
+   }
+
+   /**
+    * Returns true if this plant can be fertilized by bonemeal.
+    */
+   @Override
+   public boolean func_149852_a(World world, Random random, int x, int y, int z)
+   {
+      return true;
+   }
+
+   /**
+    * Increments the growth stage of this plant.
+    */
+   @Override
+   public void func_149853_b(World world, Random random, int x, int y, int z)
+   {
+      this.growFruit(world, x, y, z, random, true);
    }
 }

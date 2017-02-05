@@ -9,5 +9,5 @@ public class Reference
    public static final String MOD_ID = "gaiasbounty";
    public static final String MOD_NAME = "Gaia's Bounty";
    public static final String PACKET_CHANNEL = "GaiasBounty";
-   public static final String VERSION = "indev";
+   public static final String VERSION = "0.1alpha";
 }

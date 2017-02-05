@@ -6,16 +6,27 @@ import net.minecraft.world.World;
 import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraft.world.chunk.IChunkProvider;
 import net.minecraft.world.gen.feature.WorldGenerator;
-import gaiasbounty.world.IWorldGenHandler;
 
-public abstract class WorldGenTreeBase implements IWorldGenHandler
+/**
+ * Base container interface for all tree worldgen types.
+ * 
+ * @author Alex Smith
+ */
+public abstract class WorldGenTreeBase implements IWorldGenBase
 {
+   @Override
+   public abstract boolean isSpawnConfigured();
+   
    @Override
    public abstract boolean isValidSpawnBiome(BiomeGenBase biome);
    
    @Override
-   public abstract boolean canDoSpawn(Random random);
+   public abstract boolean canSpawnRandom(Random random);
    
+   /**
+    * Gets the generator object for this particular tree.
+    * @return Tree generator object
+    */
    protected abstract WorldGenerator getGenerator();
    
    @Override

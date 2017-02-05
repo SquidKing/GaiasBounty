@@ -2,7 +2,6 @@ package gaiasbounty.item;
 
 import gaiasbounty.block.BlockManager;
 import net.minecraft.block.Block;
-import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
 
 public class ItemSapling5 extends ItemMultiBlock

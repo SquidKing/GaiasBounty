@@ -6,6 +6,4 @@ public class ItemFoodPlantable extends ItemFoodMulti
    {
       super(wolfFood);
    }
-   
-   
 }

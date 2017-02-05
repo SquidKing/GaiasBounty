@@ -1,17 +1,18 @@
 package gaiasbounty.entity;
 
-import java.util.ArrayList;
-
-import net.minecraft.entity.EnumCreatureType;
-import net.minecraft.world.biome.BiomeGenBase;
 import gaiasbounty.GaiasBounty;
 import gaiasbounty.client.ClientTickHandler;
 import gaiasbounty.client.model.*;
 import gaiasbounty.client.render.*;
+
+import java.util.ArrayList;
+
+import net.minecraft.entity.EnumCreatureType;
+import net.minecraft.world.biome.BiomeGenBase;
+import net.minecraftforge.common.BiomeDictionary;
+import net.minecraftforge.common.BiomeDictionary.Type;
 import cpw.mods.fml.client.registry.RenderingRegistry;
 import cpw.mods.fml.common.registry.EntityRegistry;
-import net.minecraftforge.common.BiomeDictionary;
-import static net.minecraftforge.common.BiomeDictionary.Type;
 
 public class EntityManager
 {

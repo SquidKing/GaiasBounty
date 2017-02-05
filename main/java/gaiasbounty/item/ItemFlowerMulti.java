@@ -2,11 +2,8 @@ package gaiasbounty.item;
 
 import gaiasbounty.block.BlockManager;
 import net.minecraft.block.Block;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
-import net.minecraft.world.World;
 
 public class ItemFlowerMulti extends ItemMultiBlock
 {

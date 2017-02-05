@@ -1,5 +1,6 @@
 package gaiasbounty.world.gen;
 
+import gaiasbounty.config.ConfigManager;
 import gaiasbounty.world.gen.tree.TreeGenLime;
 
 import java.util.Random;
@@ -17,6 +18,12 @@ import net.minecraftforge.common.BiomeDictionary.Type;
 public class WorldGenLime extends WorldGenTreeBase
 {
    private static final WorldGenerator GENERATOR = new TreeGenLime();
+   
+   @Override
+   public boolean isSpawnConfigured()
+   {
+      return ConfigManager.canGenTreeLime;
+   }
 
    @Override
    public boolean isValidSpawnBiome(BiomeGenBase biome)
@@ -25,7 +32,7 @@ public class WorldGenLime extends WorldGenTreeBase
    }
 
    @Override
-   public boolean canDoSpawn(Random random)
+   public boolean canSpawnRandom(Random random)
    {
       return 0 == random.nextInt(35);
    }

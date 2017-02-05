@@ -6,9 +6,9 @@ import java.util.List;
 import java.util.Random;
 
 import net.minecraft.block.BlockFlower;
+import net.minecraft.block.IGrowable;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
@@ -18,11 +18,11 @@ import net.minecraftforge.event.terraingen.TerrainGen;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class BlockSapling extends BlockFlower implements IFertilizeable
+public class BlockSapling extends BlockFlower implements IGrowable
 {
    public final String[] TREE_TYPES;
    private WorldGenerator[] generators;
-   @SideOnly(Side.CLIENT) private IIcon[] iconArray;
+   @SideOnly(Side.CLIENT) private IIcon[] icons;
    
    public BlockSapling(String ... strings)
    {
@@ -69,7 +69,7 @@ public class BlockSapling extends BlockFlower implements IFertilizeable
    @Override
    public IIcon getIcon(int side, int meta)
    {
-      return this.iconArray[meta & 3];
+      return this.icons[meta & 3];
    }
    
    public void growTree(World world, int x, int y, int z, Random rand)
@@ -106,21 +106,39 @@ public class BlockSapling extends BlockFlower implements IFertilizeable
    @SideOnly(Side.CLIENT)
    public void registerBlockIcons(IIconRegister icons)
    {
-      this.iconArray = new IIcon[TREE_TYPES.length];
+      this.icons = new IIcon[TREE_TYPES.length];
       
       for (int i = 0; i < TREE_TYPES.length; ++i)
       {
-         this.iconArray[i] = icons.registerIcon(Reference.GB_TEX_PREFIX
+         this.icons[i] = icons.registerIcon(Reference.GB_TEX_PREFIX
                   + "sapling_" + TREE_TYPES[i]);
       }
    }
 
+   /**
+    * Returns true if this plant is still growing. If false, it is considered to be fully grown.
+    */
    @Override
-   public boolean fertilize(World world, Random rand, int x, int y, int z)
+   public boolean func_149851_a(World world, int x, int y, int z, boolean isClientSide)
    {
-      world.playAuxSFX(2005, x, y, z, 0);
-      if (rand.nextFloat() < 0.45D)
-         this.growTree(world, x, y, z, rand);
       return true;
+   }
+
+   /**
+    * Returns true if this plant can be fertilized by bonemeal.
+    */
+   @Override
+   public boolean func_149852_a(World world, Random random, int x, int y, int z)
+   {
+      return true;
+   }
+
+   /**
+    * Increments the growth stage of this plant.
+    */
+   @Override
+   public void func_149853_b(World world, Random random, int x, int y, int z)
+   {
+      if (random.nextFloat() < 0.45D) this.growTree(world, x, y, z, random);
    }
 }

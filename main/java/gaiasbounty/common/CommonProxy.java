@@ -3,27 +3,23 @@ package gaiasbounty.common;
 import gaiasbounty.GaiasBounty;
 import gaiasbounty.block.BlockManager;
 import gaiasbounty.config.ConfigManager;
-import gaiasbounty.entity.*;
+import gaiasbounty.entity.EntityManager;
 import gaiasbounty.event.EventManager;
 import gaiasbounty.item.ItemManager;
 import gaiasbounty.mod.ModManager;
 import gaiasbounty.potion.PotionGB;
 import gaiasbounty.recipe.RecipeManager;
-import gaiasbounty.recipe.SmeltingRecipes;
 import gaiasbounty.tileentity.TileEntityManager;
 import gaiasbounty.village.VillageManager;
 import gaiasbounty.world.WorldGenManager;
-import net.minecraft.entity.EnumCreatureType;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
-import net.minecraft.world.biome.BiomeGenBase;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.network.IGuiHandler;
 import cpw.mods.fml.common.network.NetworkRegistry;
-import cpw.mods.fml.common.registry.EntityRegistry;
 
 public class CommonProxy implements IGuiHandler
 {

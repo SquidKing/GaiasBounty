@@ -1,11 +1,7 @@
 package gaiasbounty.recipe;
 
 import gaiasbounty.item.ItemManager;
-import net.minecraft.block.Block;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.crafting.FurnaceRecipes;
-import cpw.mods.fml.common.IFuelHandler;
 import cpw.mods.fml.common.registry.GameRegistry;
 
 public class SmeltingRecipes

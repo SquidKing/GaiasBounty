@@ -1,17 +1,14 @@
 package gaiasbounty.block;
 
-import cpw.mods.fml.common.registry.GameRegistry;
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockFire;
-import net.minecraft.block.material.Material;
-import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.init.Blocks;
-import net.minecraft.init.Items;
-import net.minecraft.item.ItemStack;
-import gaiasbounty.block.*;
 import gaiasbounty.item.*;
 import gaiasbounty.lib.*;
 import gaiasbounty.world.gen.tree.*;
+import net.minecraft.block.Block;
+import net.minecraft.block.material.Material;
+import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
+import net.minecraft.item.ItemStack;
+import cpw.mods.fml.common.registry.GameRegistry;
 
 public class BlockManager
 {
@@ -42,9 +39,10 @@ public class BlockManager
    public static Block treefruit3;
    public static Block treefruit4;
    public static Block treefruit5;
-   public static Block coconut;
    public static Block trellis;
    public static Block basaltSand;
+   public static Block cropFlax;
+   public static Block cropGinger;
    
    public static String[] tree1Subtypes =
       { "apple", "peach", "cherry", "banana" };
@@ -65,105 +63,106 @@ public class BlockManager
                "hazelnut", "pecan", "almond" };
    
    public static String[] planks2Subtypes =
-      { "macadamia", "mesquite", "olive", "palm", "sassafras", "tea", "rubber", "maple" };
+      { "macadamia", "mesquite", "olive", "palm", "sassafras", "tea", "rubber",
+               "maple" };
    
    public static void addBlocks()
    {
-      saplings1 = new BlockSapling(tree1Subtypes)
-               .setBlockName(Reference.GB_NAME_PREFIX + "saplings1")
-               .setCreativeTab(CreativeTabsGB.PLANT);
+      saplings1 = new BlockSapling(tree1Subtypes).setBlockName(
+               Reference.GB_NAME_PREFIX + "saplings1").setCreativeTab(
+               CreativeTabsGB.PLANT);
       ((BlockSapling) saplings1).setTreeGenerators(new TreeGenApple(),
                new TreeGenPeach(), new TreeGenCherry(), new TreeGenBanana());
       GameRegistry.registerBlock(saplings1, ItemSapling1.class, "saplings1");
-      saplings2 = new BlockSapling(tree2Subtypes)
-               .setBlockName(Reference.GB_NAME_PREFIX + "saplings2")
-               .setCreativeTab(CreativeTabsGB.PLANT);
+      saplings2 = new BlockSapling(tree2Subtypes).setBlockName(
+               Reference.GB_NAME_PREFIX + "saplings2").setCreativeTab(
+               CreativeTabsGB.PLANT);
       ((BlockSapling) saplings2).setTreeGenerators(new TreeGenOrange(),
                new TreeGenLemon(), new TreeGenLime(), new TreeGenPlum());
       GameRegistry.registerBlock(saplings2, ItemSapling2.class, "saplings2");
-      saplings3 = new BlockSapling(tree3Subtypes)
-               .setBlockName(Reference.GB_NAME_PREFIX + "saplings3")
-               .setCreativeTab(CreativeTabsGB.PLANT);
+      saplings3 = new BlockSapling(tree3Subtypes).setBlockName(
+               Reference.GB_NAME_PREFIX + "saplings3").setCreativeTab(
+               CreativeTabsGB.PLANT);
       ((BlockSapling) saplings3).setTreeGenerators(new TreeGenMango(),
                new TreeGenPear(), new TreeGenPomegranate(), new TreeGenFig());
       GameRegistry.registerBlock(saplings3, ItemSapling3.class, "saplings3");
-      saplings4 = new BlockSapling(tree4Subtypes)
-               .setBlockName(Reference.GB_NAME_PREFIX + "saplings4")
-               .setCreativeTab(CreativeTabsGB.PLANT);
+      saplings4 = new BlockSapling(tree4Subtypes).setBlockName(
+               Reference.GB_NAME_PREFIX + "saplings4").setCreativeTab(
+               CreativeTabsGB.PLANT);
       ((BlockSapling) saplings4).setTreeGenerators(new TreeGenWalnut(),
                new TreeGenHazelnut(), new TreeGenPecan(), new TreeGenAlmond());
       GameRegistry.registerBlock(saplings4, ItemSapling4.class, "saplings4");
-      saplings5 = new BlockSapling(tree5Subtypes)
-               .setBlockName(Reference.GB_NAME_PREFIX + "saplings5")
-               .setCreativeTab(CreativeTabsGB.PLANT);
+      saplings5 = new BlockSapling(tree5Subtypes).setBlockName(
+               Reference.GB_NAME_PREFIX + "saplings5").setCreativeTab(
+               CreativeTabsGB.PLANT);
       ((BlockSapling) saplings5).setTreeGenerators(new TreeGenMacadamia(),
                new TreeGenMesquite(), new TreeGenOlive(), new TreeGenPalm());
       GameRegistry.registerBlock(saplings5, ItemSapling5.class, "saplings5");
-      saplings6 = new BlockSapling(tree6Subtypes)
-               .setBlockName(Reference.GB_NAME_PREFIX + "saplings6")
-               .setCreativeTab(CreativeTabsGB.PLANT);
+      saplings6 = new BlockSapling(tree6Subtypes).setBlockName(
+               Reference.GB_NAME_PREFIX + "saplings6").setCreativeTab(
+               CreativeTabsGB.PLANT);
       ((BlockSapling) saplings6).setTreeGenerators(new TreeGenSassafras(),
                new TreeGenTea(), new TreeGenRubber(), new TreeGenMaple());
       GameRegistry.registerBlock(saplings6, ItemSapling6.class, "saplings6");
       
-      logs1 = new BlockLogStandard(tree1Subtypes)
-               .setBlockName(Reference.GB_NAME_PREFIX + "logs1")
-               .setCreativeTab(CreativeTabsGB.PLANT);
+      logs1 = new BlockLogStandard(tree1Subtypes).setBlockName(
+               Reference.GB_NAME_PREFIX + "logs1").setCreativeTab(
+               CreativeTabsGB.PLANT);
       GameRegistry.registerBlock(logs1, ItemLogs1.class, "logs1");
-      logs2 = new BlockLogStandard(tree2Subtypes)
-               .setBlockName(Reference.GB_NAME_PREFIX + "logs2")
-               .setCreativeTab(CreativeTabsGB.PLANT);
+      logs2 = new BlockLogStandard(tree2Subtypes).setBlockName(
+               Reference.GB_NAME_PREFIX + "logs2").setCreativeTab(
+               CreativeTabsGB.PLANT);
       GameRegistry.registerBlock(logs2, ItemLogs2.class, "logs2");
-      logs3 = new BlockLogStandard(tree3Subtypes)
-               .setBlockName(Reference.GB_NAME_PREFIX + "logs3")
-               .setCreativeTab(CreativeTabsGB.PLANT);
+      logs3 = new BlockLogStandard(tree3Subtypes).setBlockName(
+               Reference.GB_NAME_PREFIX + "logs3").setCreativeTab(
+               CreativeTabsGB.PLANT);
       GameRegistry.registerBlock(logs3, ItemLogs3.class, "logs3");
-      logs4 = new BlockLogStandard(tree4Subtypes)
-               .setBlockName(Reference.GB_NAME_PREFIX + "logs4")
-               .setCreativeTab(CreativeTabsGB.PLANT);
+      logs4 = new BlockLogStandard(tree4Subtypes).setBlockName(
+               Reference.GB_NAME_PREFIX + "logs4").setCreativeTab(
+               CreativeTabsGB.PLANT);
       GameRegistry.registerBlock(logs4, ItemLogs4.class, "logs4");
-      logs5 = new BlockLogStandard(tree5Subtypes)
-               .setBlockName(Reference.GB_NAME_PREFIX + "logs5")
-               .setCreativeTab(CreativeTabsGB.PLANT);
+      logs5 = new BlockLogStandard(tree5Subtypes).setBlockName(
+               Reference.GB_NAME_PREFIX + "logs5").setCreativeTab(
+               CreativeTabsGB.PLANT);
       GameRegistry.registerBlock(logs5, ItemLogs5.class, "logs5");
-      logs6 = new BlockLogStandard(tree6Subtypes)
-               .setBlockName(Reference.GB_NAME_PREFIX + "logs6")
-               .setCreativeTab(CreativeTabsGB.PLANT);
+      logs6 = new BlockLogStandard(tree6Subtypes).setBlockName(
+               Reference.GB_NAME_PREFIX + "logs6").setCreativeTab(
+               CreativeTabsGB.PLANT);
       GameRegistry.registerBlock(logs6, ItemLogs6.class, "logs6");
-      logsSap = new BlockSapLog("rubber", "maple")
-               .setBlockName(Reference.GB_NAME_PREFIX + "logsSap")
-               .setCreativeTab(CreativeTabsGB.PLANT);
+      logsSap = new BlockSapLog("rubber", "maple").setBlockName(
+               Reference.GB_NAME_PREFIX + "logsSap").setCreativeTab(
+               CreativeTabsGB.PLANT);
       GameRegistry.registerBlock(logsSap, "logsSap");
-
-      leaves1 = new BlockLeavesFruit(tree1Subtypes)
-               .setBlockName(Reference.GB_NAME_PREFIX + "leaves1")
-               .setCreativeTab(CreativeTabsGB.PLANT);
+      
+      leaves1 = new BlockLeavesFruit(tree1Subtypes).setBlockName(
+               Reference.GB_NAME_PREFIX + "leaves1").setCreativeTab(
+               CreativeTabsGB.PLANT);
       ((BlockLeavesStandard) leaves1).setSaplingItem(saplings1);
       GameRegistry.registerBlock(leaves1, ItemLeaves1.class, "leaves1");
-      leaves2 = new BlockLeavesFruit(tree2Subtypes)
-               .setBlockName(Reference.GB_NAME_PREFIX + "leaves2")
-               .setCreativeTab(CreativeTabsGB.PLANT);
+      leaves2 = new BlockLeavesFruit(tree2Subtypes).setBlockName(
+               Reference.GB_NAME_PREFIX + "leaves2").setCreativeTab(
+               CreativeTabsGB.PLANT);
       ((BlockLeavesStandard) leaves2).setSaplingItem(saplings2);
       GameRegistry.registerBlock(leaves2, ItemLeaves2.class, "leaves2");
-      leaves3 = new BlockLeavesFruit(tree3Subtypes)
-               .setBlockName(Reference.GB_NAME_PREFIX + "leaves3")
-               .setCreativeTab(CreativeTabsGB.PLANT);
+      leaves3 = new BlockLeavesFruit(tree3Subtypes).setBlockName(
+               Reference.GB_NAME_PREFIX + "leaves3").setCreativeTab(
+               CreativeTabsGB.PLANT);
       ((BlockLeavesStandard) leaves3).setSaplingItem(saplings3);
       GameRegistry.registerBlock(leaves3, ItemLeaves3.class, "leaves3");
-      leaves4 = new BlockLeavesFruit(tree4Subtypes)
-               .setBlockName(Reference.GB_NAME_PREFIX + "leaves4")
-               .setCreativeTab(CreativeTabsGB.PLANT);
+      leaves4 = new BlockLeavesFruit(tree4Subtypes).setBlockName(
+               Reference.GB_NAME_PREFIX + "leaves4").setCreativeTab(
+               CreativeTabsGB.PLANT);
       ((BlockLeavesStandard) leaves4).setSaplingItem(saplings4);
       GameRegistry.registerBlock(leaves4, ItemLeaves4.class, "leaves4");
-      leaves5 = new BlockLeavesFruitCoconut(tree5Subtypes)
-               .setBlockName(Reference.GB_NAME_PREFIX + "leaves5")
-               .setCreativeTab(CreativeTabsGB.PLANT);
+      leaves5 = new BlockLeavesFruit(tree5Subtypes).setBlockName(
+               Reference.GB_NAME_PREFIX + "leaves5").setCreativeTab(
+               CreativeTabsGB.PLANT);
       ((BlockLeavesStandard) leaves5).setSaplingItem(saplings5);
       ((BlockLeavesStandard) leaves5).setSaplingDropRates(20, 20, 20, 12);
       GameRegistry.registerBlock(leaves5, ItemLeaves5.class, "leaves5");
-      leaves6 = new BlockLeavesStandard(tree6Subtypes)
-               .setBlockName(Reference.GB_NAME_PREFIX + "leaves6")
-               .setCreativeTab(CreativeTabsGB.PLANT);
+      leaves6 = new BlockLeavesStandard(tree6Subtypes).setBlockName(
+               Reference.GB_NAME_PREFIX + "leaves6").setCreativeTab(
+               CreativeTabsGB.PLANT);
       ((BlockLeavesStandard) leaves6).setSaplingItem(saplings6);
       GameRegistry.registerBlock(leaves6, ItemLeaves6.class, "leaves6");
       
@@ -179,34 +178,44 @@ public class BlockManager
       treefruit4 = new BlockTreeFruit(tree4Subtypes)
                .setBlockName(Reference.GB_NAME_PREFIX + "treefruit4");
       GameRegistry.registerBlock(treefruit4, "treefruit4");
-      treefruit5 = new BlockTreeFruit("macadamia", "mesquite", "olive")
+      treefruit5 = new BlockTreeFruit(tree5Subtypes)
                .setBlockName(Reference.GB_NAME_PREFIX + "treefruit5");
       GameRegistry.registerBlock(treefruit5, "treefruit5");
-      coconut = new BlockCoconut()
-               .setBlockName(Reference.GB_NAME_PREFIX + "coconut");
-      GameRegistry.registerBlock(coconut, "coconut");
       
-      planks1 = new BlockPlanks(planks1Subtypes)
-               .setBlockName(Reference.GB_NAME_PREFIX + "planks1")
-               .setCreativeTab(CreativeTabsGB.PLANT);
+      planks1 = new BlockPlanks(planks1Subtypes).setBlockName(
+               Reference.GB_NAME_PREFIX + "planks1").setCreativeTab(
+               CreativeTabsGB.PLANT);
       GameRegistry.registerBlock(planks1, ItemPlanks1.class, "planks1");
-      planks2 = new BlockPlanks(planks2Subtypes)
-               .setBlockName(Reference.GB_NAME_PREFIX + "planks2")
-               .setCreativeTab(CreativeTabsGB.PLANT);
+      planks2 = new BlockPlanks(planks2Subtypes).setBlockName(
+               Reference.GB_NAME_PREFIX + "planks2").setCreativeTab(
+               CreativeTabsGB.PLANT);
       GameRegistry.registerBlock(planks2, ItemPlanks2.class, "planks2");
       trellis = new BlockTrellis("trellis", "trellis_edge", Material.wood, true)
                .setStepSound(Block.soundTypeWood)
                .setBlockName(Reference.GB_NAME_PREFIX + "trellis")
                .setCreativeTab(CreativeTabsGB.MISC);
       GameRegistry.registerBlock(trellis, "trellis");
-      basaltSand = new BlockBasaltSand()
-               .setBlockName(Reference.GB_NAME_PREFIX + "basaltSand")
-               .setCreativeTab(CreativeTabsGB.MISC);
+      basaltSand = new BlockBasaltSand().setBlockName(
+               Reference.GB_NAME_PREFIX + "basaltSand").setCreativeTab(
+               CreativeTabsGB.MISC);
       GameRegistry.registerBlock(basaltSand, "basaltSand");
+      cropFlax = new BlockCropsBase("flax").setBlockName(
+               Reference.GB_NAME_PREFIX + "cropFlax").setCreativeTab(
+               CreativeTabsGB.MISC);
+      GameRegistry.registerBlock(cropFlax, "cropFlax");
+      cropGinger = new BlockCropsBase("ginger").setBlockName(
+               Reference.GB_NAME_PREFIX + "cropGinger").setCreativeTab(
+               CreativeTabsGB.MISC);
+      GameRegistry.registerBlock(cropGinger, "cropGinger");
    }
    
    public static void setBlockMiscData()
    {
+      ((BlockCropsBase)cropFlax).setSeedAndProduce(
+               new ItemStack(ItemManager.material, 1, 10), new ItemStack(ItemManager.material, 1, 11));
+      ((BlockCropsBase)cropGinger).setSeedAndProduce(
+               new ItemStack(ItemManager.material, 1, 8), new ItemStack(ItemManager.material, 1, 9));
+      
       Blocks.fire.setFireInfo(logs1, 30, 60);
       Blocks.fire.setFireInfo(logs2, 30, 60);
       Blocks.fire.setFireInfo(logs3, 30, 60);
@@ -232,47 +241,52 @@ public class BlockManager
       ((BlockLeavesFruit) leaves5).setFruitBlock(treefruit5);
       
       ((BlockLeavesStandard) leaves1).setRareLeafDrops(new ItemStack(
-               Items.apple, 1, 0), 150, new ItemStack(ItemManager.foodCrop, 1, 0),
-               150, new ItemStack(ItemManager.foodCrop, 1, 1), 150, new ItemStack(
-                        ItemManager.foodCrop, 1, 2), 150);
+               Items.apple, 1, 0), 150, new ItemStack(ItemManager.foodCrop, 1,
+               0), 150, new ItemStack(ItemManager.foodCrop, 1, 1), 150,
+               new ItemStack(ItemManager.foodCrop, 1, 2), 150);
       ((BlockLeavesStandard) leaves2).setRareLeafDrops(new ItemStack(
-               ItemManager.foodCrop, 1, 3), 150, new ItemStack(ItemManager.foodCrop, 1,
-               4), 150, new ItemStack(ItemManager.foodCrop, 1, 5), 150,
-               new ItemStack(ItemManager.foodCrop, 1, 6), 150);
+               ItemManager.foodCrop, 1, 3), 150, new ItemStack(
+               ItemManager.foodCrop, 1, 4), 150, new ItemStack(
+               ItemManager.foodCrop, 1, 5), 150, new ItemStack(
+               ItemManager.foodCrop, 1, 6), 150);
       ((BlockLeavesStandard) leaves3).setRareLeafDrops(new ItemStack(
-               ItemManager.foodCrop, 1, 7), 150, new ItemStack(ItemManager.foodCrop, 1,
-               8), 150, new ItemStack(ItemManager.foodCrop, 1, 9), 150,
-               new ItemStack(ItemManager.foodCrop, 1, 10), 150);
+               ItemManager.foodCrop, 1, 7), 150, new ItemStack(
+               ItemManager.foodCrop, 1, 8), 150, new ItemStack(
+               ItemManager.foodCrop, 1, 9), 150, new ItemStack(
+               ItemManager.foodCrop, 1, 10), 150);
       ((BlockLeavesStandard) leaves4).setRareLeafDrops(new ItemStack(
-               ItemManager.foodCrop, 1, 11), 150, new ItemStack(ItemManager.foodCrop,
-               1, 12), 150, new ItemStack(ItemManager.foodCrop, 1, 13), 150,
-               new ItemStack(ItemManager.foodCrop, 1, 14), 150);
+               ItemManager.foodCrop, 1, 11), 150, new ItemStack(
+               ItemManager.foodCrop, 1, 12), 150, new ItemStack(
+               ItemManager.foodCrop, 1, 13), 150, new ItemStack(
+               ItemManager.foodCrop, 1, 14), 150);
       ((BlockLeavesStandard) leaves5).setRareLeafDrops(new ItemStack(
                ItemManager.foodCrop, 1, 15), 150, new ItemStack(
                ItemManager.material, 1, 0), 150, new ItemStack(
-               ItemManager.foodCrop, 1, 16), 150, new ItemStack(ItemManager.foodCrop,
-               1, 17), 150);
+               ItemManager.foodCrop, 1, 16), 150, new ItemStack(
+               ItemManager.foodCrop, 1, 17), 150);
       ((BlockLeavesStandard) leaves6).setRareLeafDrops(null, 1, new ItemStack(
                ItemManager.material, 1, 6), 3, null, 1, null, 1);
       
       ((BlockTreeFruit) treefruit1).setFruitItems(new ItemStack(Items.apple, 1,
                0), new ItemStack(ItemManager.foodCrop, 1, 0), new ItemStack(
-               ItemManager.foodCrop, 1, 1), new ItemStack(ItemManager.foodCrop, 1, 2));
+               ItemManager.foodCrop, 1, 1), new ItemStack(ItemManager.foodCrop,
+               1, 2));
       ((BlockTreeFruit) treefruit2).setFruitItems(new ItemStack(
-               ItemManager.foodCrop, 1, 3), new ItemStack(ItemManager.foodCrop, 1, 4),
-               new ItemStack(ItemManager.foodCrop, 1, 5), new ItemStack(
-                        ItemManager.foodCrop, 1, 6));
+               ItemManager.foodCrop, 1, 3), new ItemStack(ItemManager.foodCrop,
+               1, 4), new ItemStack(ItemManager.foodCrop, 1, 5), new ItemStack(
+               ItemManager.foodCrop, 1, 6));
       ((BlockTreeFruit) treefruit3).setFruitItems(new ItemStack(
-               ItemManager.foodCrop, 1, 7), new ItemStack(ItemManager.foodCrop, 1, 8),
-               new ItemStack(ItemManager.foodCrop, 1, 9), new ItemStack(
-                        ItemManager.foodCrop, 1, 10));
+               ItemManager.foodCrop, 1, 7), new ItemStack(ItemManager.foodCrop,
+               1, 8), new ItemStack(ItemManager.foodCrop, 1, 9), new ItemStack(
+               ItemManager.foodCrop, 1, 10));
       ((BlockTreeFruit) treefruit4).setFruitItems(new ItemStack(
-               ItemManager.foodCrop, 1, 11),
-               new ItemStack(ItemManager.foodCrop, 1, 12), new ItemStack(
-                        ItemManager.foodCrop, 1, 13), new ItemStack(
-                        ItemManager.foodCrop, 1, 14));
+               ItemManager.foodCrop, 1, 11), new ItemStack(
+               ItemManager.foodCrop, 1, 12), new ItemStack(
+               ItemManager.foodCrop, 1, 13), new ItemStack(
+               ItemManager.foodCrop, 1, 14));
       ((BlockTreeFruit) treefruit5).setFruitItems(new ItemStack(
-               ItemManager.foodCrop, 1, 15), new ItemStack(ItemManager.material, 1,
-               0), new ItemStack(ItemManager.foodCrop, 1, 16));
+               ItemManager.foodCrop, 1, 15), new ItemStack(
+               ItemManager.material, 1, 0), new ItemStack(ItemManager.foodCrop,
+               1, 16), new ItemStack(ItemManager.foodCrop, 1, 17));
    }
 }

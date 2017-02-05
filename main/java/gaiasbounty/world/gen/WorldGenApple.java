@@ -1,5 +1,6 @@
 package gaiasbounty.world.gen;
 
+import gaiasbounty.config.ConfigManager;
 import gaiasbounty.world.gen.tree.TreeGenApple;
 
 import java.util.Random;
@@ -17,6 +18,12 @@ import net.minecraftforge.common.BiomeDictionary.Type;
 public class WorldGenApple extends WorldGenTreeBase
 {
    private static final WorldGenerator GENERATOR = new TreeGenApple();
+   
+   @Override
+   public boolean isSpawnConfigured()
+   {
+      return ConfigManager.canGenTreeApple;
+   }
 
    @Override
    public boolean isValidSpawnBiome(BiomeGenBase biome)
@@ -27,7 +34,7 @@ public class WorldGenApple extends WorldGenTreeBase
    }
 
    @Override
-   public boolean canDoSpawn(Random random)
+   public boolean canSpawnRandom(Random random)
    {
       return 0 == random.nextInt(30);
    }

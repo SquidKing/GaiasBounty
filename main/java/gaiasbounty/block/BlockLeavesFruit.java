@@ -1,26 +1,13 @@
 package gaiasbounty.block;
 
-import gaiasbounty.item.ItemManager;
-import gaiasbounty.lib.Reference;
-
-import java.util.List;
 import java.util.Random;
 
 import net.minecraft.block.Block;
-import net.minecraft.client.renderer.texture.IIconRegister;
-import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Blocks;
-import net.minecraft.item.Item;
+import net.minecraft.block.IGrowable;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.IIcon;
-import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
-import cpw.mods.fml.common.eventhandler.Event.Result;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 
-public class BlockLeavesFruit extends BlockLeavesStandard implements IFertilizeable
+public class BlockLeavesFruit extends BlockLeavesStandard implements IGrowable
 {
    protected Block fruitBlock;
    
@@ -206,14 +193,30 @@ public class BlockLeavesFruit extends BlockLeavesStandard implements IFertilizea
       this.fruitBlock = fruitBlock;
    }
 
+   /**
+    * Returns true if this plant is still growing. If false, it is considered to be fully grown.
+    */
    @Override
-   public boolean fertilize(World world, Random rand, int x, int y, int z)
+   public boolean func_149851_a(World world, int x, int y, int z, boolean isClientSide)
    {
-      if (this.growFruit(world, x, y, z))
-      {
-         world.playAuxSFX(2005, x, y, z, 0);
-         return true;
-      }
-      return false;
+      return world.blockExists(x, y - 1, z) && world.isAirBlock(x, y - 1, z);
+   }
+
+   /**
+    * Returns true if this plant can be fertilized by bonemeal.
+    */
+   @Override
+   public boolean func_149852_a(World world, Random random, int x, int y, int z)
+   {
+      return world.blockExists(x, y - 1, z) && world.isAirBlock(x, y - 1, z);
+   }
+
+   /**
+    * Increments the growth stage of this plant.
+    */
+   @Override
+   public void func_149853_b(World world, Random random, int x, int y, int z)
+   {
+      this.growFruit(world, x, y, z);
    }
 }

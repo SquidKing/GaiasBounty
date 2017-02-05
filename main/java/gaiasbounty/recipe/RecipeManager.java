@@ -1,19 +1,9 @@
 package gaiasbounty.recipe;
 
-import gaiasbounty.GaiasBounty;
 import gaiasbounty.block.BlockManager;
 import gaiasbounty.item.ItemManager;
-
-import java.util.ArrayList;
-
-import net.minecraft.init.Items;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.crafting.CraftingManager;
-import net.minecraft.item.crafting.IRecipe;
 import net.minecraftforge.oredict.OreDictionary;
-import net.minecraftforge.oredict.ShapedOreRecipe;
-import net.minecraftforge.oredict.ShapelessOreRecipe;
 
 public class RecipeManager
 {

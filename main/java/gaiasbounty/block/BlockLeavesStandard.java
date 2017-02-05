@@ -1,18 +1,14 @@
 package gaiasbounty.block;
 
-import gaiasbounty.item.ItemManager;
 import gaiasbounty.lib.Reference;
 
 import java.util.List;
 import java.util.Random;
 
 import net.minecraft.block.Block;
-import net.minecraft.block.BlockFire;
 import net.minecraft.block.BlockLeaves;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
@@ -30,7 +26,7 @@ public class BlockLeavesStandard extends BlockLeaves
    private Item saplingItem;
    int[] adjacentTreeBlocks;
    @SideOnly(Side.CLIENT) private int gfxIconOffset;
-   private IIcon[][] iconArray;
+   private IIcon[][] icons;
    
    public BlockLeavesStandard(String ... leaves)
    {
@@ -281,7 +277,7 @@ public class BlockLeavesStandard extends BlockLeaves
    @Override
    public IIcon getIcon(int side, int meta)
    {
-      return this.iconArray[this.field_150121_P ? 0 : 1][meta & 3];
+      return this.icons[meta & 3][this.field_150121_P ? 0 : 1];
    }
    
    @Override
@@ -318,13 +314,13 @@ public class BlockLeavesStandard extends BlockLeaves
    @SideOnly(Side.CLIENT)
    public void registerBlockIcons(IIconRegister icons)
    {
-      this.iconArray = new IIcon[2][leaf_types.length];
+      this.icons = new IIcon[leaf_types.length][2];
       
       for (int i = 0; i < 4; ++i)
       {
-         this.iconArray[0][i] = icons.registerIcon(Reference.GB_TEX_PREFIX
+         this.icons[i][0] = icons.registerIcon(Reference.GB_TEX_PREFIX
                   + "leaves_" + leaf_types[i]);
-         this.iconArray[1][i] = icons.registerIcon(Reference.GB_TEX_PREFIX
+         this.icons[i][1] = icons.registerIcon(Reference.GB_TEX_PREFIX
                   + "leaves_" + leaf_types[i] + "_opaque");
       }
    }

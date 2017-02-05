@@ -1,6 +1,5 @@
 package gaiasbounty.village;
 
-import gaiasbounty.config.ConfigManager;
 import gaiasbounty.item.ItemManager;
 import gaiasbounty.lib.Reference;
 

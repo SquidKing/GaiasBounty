@@ -1,8 +1,8 @@
 package gaiasbounty.item;
 
-import net.minecraft.block.Block;
 import gaiasbounty.block.BlockManager;
 import gaiasbounty.lib.Reference;
+import net.minecraft.block.Block;
 
 public class ItemPlanks1 extends ItemMultiBlock
 {

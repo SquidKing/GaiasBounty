@@ -1,7 +1,5 @@
 package gaiasbounty.item;
 
-import gaiasbounty.block.BlockManager;
-import gaiasbounty.lib.Reference;
 import net.minecraft.block.Block;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;

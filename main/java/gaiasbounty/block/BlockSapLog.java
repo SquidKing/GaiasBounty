@@ -1,27 +1,22 @@
 package gaiasbounty.block;
 
-import gaiasbounty.GaiasBounty;
 import gaiasbounty.item.ItemSpigot;
 import gaiasbounty.lib.Reference;
 
-import java.util.List;
 import java.util.Random;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockDirectional;
-import net.minecraft.block.BlockFire;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
-import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
-import net.minecraftforge.common.util.ForgeDirection;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 public class BlockSapLog extends BlockDirectional
 {  
@@ -29,7 +24,7 @@ public class BlockSapLog extends BlockDirectional
    private Block logBase;
    private ItemStack drop1, drop2;
    private String logName1, logName2;
-   private IIcon[] iconArray;
+   private IIcon[][] icons;
    
    public BlockSapLog(String log1, String log2)
    {
@@ -137,34 +132,34 @@ public class BlockSapLog extends BlockDirectional
    @SideOnly(Side.CLIENT)
    public IIcon getIcon(int side, int meta)
    {
-      if (side < 2) return this.iconArray[(meta & 4) + 1];
+      if (side < 2) return this.icons[(meta & 4) / 4][1];
       
       if (side - 2 == this.getDirection(meta))
       {
-         if ((meta & 8) == 8) return this.iconArray[(meta & 4) + 3];
-         else return this.iconArray[(meta & 4) + 2];
+         if ((meta & 8) == 8) return this.icons[(meta & 4) / 4][3];
+         else return this.icons[(meta & 4) / 4][2];
       }
-      else return this.iconArray[meta & 4];
+      else return this.icons[(meta & 4) / 4][0];
    }
    
    @Override
    @SideOnly(Side.CLIENT)
    public void registerBlockIcons(IIconRegister icons)
    {
-      this.iconArray = new IIcon[8];
+      this.icons = new IIcon[2][4];
       
-      iconArray[0] = this.logBase.getIcon(2, this.logMeta1);
-      iconArray[1] = this.logBase.getIcon(0, this.logMeta1);
-      iconArray[2] = icons.registerIcon(Reference.GB_TEX_PREFIX
+      this.icons[0][0] = this.logBase.getIcon(2, this.logMeta1);
+      this.icons[0][1] = this.logBase.getIcon(0, this.logMeta1);
+      this.icons[0][2] = icons.registerIcon(Reference.GB_TEX_PREFIX
                + "tree_" + logName1 + "_dry");
-      iconArray[3] = icons.registerIcon(Reference.GB_TEX_PREFIX
+      this.icons[0][3] = icons.registerIcon(Reference.GB_TEX_PREFIX
                + "tree_" + logName1 + "_sap");
       
-      iconArray[4] = this.logBase.getIcon(2, this.logMeta2);
-      iconArray[5] = this.logBase.getIcon(0, this.logMeta2);
-      iconArray[6] = icons.registerIcon(Reference.GB_TEX_PREFIX
+      this.icons[1][0] = this.logBase.getIcon(2, this.logMeta2);
+      this.icons[1][1] = this.logBase.getIcon(0, this.logMeta2);
+      this.icons[1][2] = icons.registerIcon(Reference.GB_TEX_PREFIX
                + "tree_" + logName2 + "_dry");
-      iconArray[7] = icons.registerIcon(Reference.GB_TEX_PREFIX
+      this.icons[1][3] = icons.registerIcon(Reference.GB_TEX_PREFIX
                + "tree_" + logName2 + "_sap");
    }
 }

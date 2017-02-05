@@ -1,7 +1,6 @@
 package gaiasbounty.config;
 
 import java.io.File;
-import java.util.HashMap;
 
 import net.minecraftforge.common.config.Configuration;
 

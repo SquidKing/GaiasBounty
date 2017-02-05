@@ -1,10 +1,9 @@
 package gaiasbounty.block;
 
+import gaiasbounty.lib.Reference;
+
 import java.util.List;
 
-import gaiasbounty.lib.Reference;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
@@ -12,13 +11,15 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 public class BlockPlanks extends Block
 {
    public String[] woodTypes;
    
    @SideOnly(Side.CLIENT)
-   private IIcon[] iconArray;
+   private IIcon[] icons;
    
    public BlockPlanks(String ... woodNames)
    {
@@ -38,7 +39,7 @@ public class BlockPlanks extends Block
    @Override
    public IIcon getIcon(int side, int meta)
    {
-      return this.iconArray[meta];
+      return this.icons[meta];
    }
    
    @Override
@@ -53,11 +54,11 @@ public class BlockPlanks extends Block
    @SideOnly(Side.CLIENT)
    public void registerBlockIcons(IIconRegister icons)
    {
-      this.iconArray = new IIcon[woodTypes.length];
+      this.icons = new IIcon[woodTypes.length];
       
       for (int i = 0; i < woodTypes.length; i++)
       {
-         this.iconArray[i] = icons.registerIcon(Reference.GB_TEX_PREFIX
+         this.icons[i] = icons.registerIcon(Reference.GB_TEX_PREFIX
                   + "plank_" + woodTypes[i]);
       }
    }

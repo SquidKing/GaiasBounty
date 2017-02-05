@@ -1,16 +1,11 @@
 package gaiasbounty.item;
 
-import cpw.mods.fml.common.registry.GameRegistry;
-import gaiasbounty.item.*;
 import gaiasbounty.lib.*;
 import gaiasbounty.potion.PotionGB;
-
-import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
-import net.minecraft.world.biome.BiomeGenBase;
+import cpw.mods.fml.common.registry.GameRegistry;
 
 public class ItemManager
 {

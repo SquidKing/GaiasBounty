@@ -5,8 +5,6 @@ import gaiasbounty.lib.Reference;
 import java.util.List;
 import java.util.Random;
 
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockFire;
 import net.minecraft.block.BlockLog;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
@@ -19,7 +17,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 public class BlockLogStandard extends BlockLog
 {
    public String[] woodType;
-   private IIcon[][] iconArray;
+   private IIcon[][] icons;
    
    public BlockLogStandard(String ... trees)
    {
@@ -44,7 +42,7 @@ public class BlockLogStandard extends BlockLog
       inner = (facing == 0 && (side == 1 || side == 0))
                || (facing == 4 && (side == 5 || side == 4))
                || (facing == 8 && (side == 2 || side == 3));
-      return this.iconArray[inner ? 1 : 0][meta & 3];
+      return this.icons[meta & 3][inner ? 1 : 0];
    }
    
    @Override
@@ -59,12 +57,12 @@ public class BlockLogStandard extends BlockLog
    @SideOnly(Side.CLIENT)
    public void registerBlockIcons(IIconRegister icons)
    {
-      iconArray = new IIcon[2][woodType.length];
+      this.icons = new IIcon[woodType.length][2];
       for (int i = 0; i < woodType.length; ++i)
       {
-         this.iconArray[0][i] = icons.registerIcon(Reference.GB_TEX_PREFIX
+         this.icons[i][0] = icons.registerIcon(Reference.GB_TEX_PREFIX
                   + "tree_" + woodType[i]);
-         this.iconArray[1][i] = icons.registerIcon(Reference.GB_TEX_PREFIX
+         this.icons[i][1] = icons.registerIcon(Reference.GB_TEX_PREFIX
                   + "tree_" + woodType[i] + "_top");
       }
    }

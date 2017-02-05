@@ -1,19 +1,14 @@
 package gaiasbounty.event;
 
-import java.util.List;
-
-import cpw.mods.fml.common.FMLCommonHandler;
-import cpw.mods.fml.common.Mod.EventHandler;
-import cpw.mods.fml.common.eventhandler.SubscribeEvent;
-import gaiasbounty.GaiasBounty;
 import gaiasbounty.block.*;
 import gaiasbounty.item.ItemManager;
 import gaiasbounty.item.ItemToolGeneric;
 import gaiasbounty.lib.Reference;
 import gaiasbounty.potion.PotionGB;
+
+import java.util.List;
+
 import net.minecraft.block.Block;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityItem;
@@ -31,16 +26,14 @@ import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.DamageSource;
 import net.minecraft.world.World;
-import net.minecraftforge.client.event.sound.SoundLoadEvent;
 import net.minecraftforge.common.MinecraftForge;
-import cpw.mods.fml.common.eventhandler.Event.Result;
-import cpw.mods.fml.common.gameevent.PlayerEvent.ItemCraftedEvent;
-import cpw.mods.fml.common.gameevent.TickEvent.ClientTickEvent;
 import net.minecraftforge.event.entity.living.LivingDropsEvent;
 import net.minecraftforge.event.entity.living.LivingEvent.LivingUpdateEvent;
 import net.minecraftforge.event.entity.player.BonemealEvent;
 import net.minecraftforge.event.entity.player.EntityItemPickupEvent;
 import net.minecraftforge.event.entity.player.PlayerDestroyItemEvent;
+import cpw.mods.fml.common.eventhandler.Event.Result;
+import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 
 public class EventManager
 {
@@ -52,17 +45,6 @@ public class EventManager
    {
       MinecraftForge.EVENT_BUS.register(INSTANCE);
       //FMLCommonHandler.instance().bus().register(INSTANCE);
-   }
-   
-   @SubscribeEvent
-   public void fertilize(BonemealEvent event)
-   {
-      Block block = event.world.getBlock(event.x, event.y, event.z);
-      if (!event.world.isRemote && block instanceof IFertilizeable)
-      {
-         if (((IFertilizeable) block).fertilize(event.world, event.world.rand,
-                  event.x, event.y, event.z)) event.setResult(Result.ALLOW);
-      }
    }
    
    @SubscribeEvent

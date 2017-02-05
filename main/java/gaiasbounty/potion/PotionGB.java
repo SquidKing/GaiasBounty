@@ -6,9 +6,9 @@ import gaiasbounty.config.ConfigManager;
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
 
-import org.apache.logging.log4j.Level;
-
 import net.minecraft.potion.Potion;
+
+import org.apache.logging.log4j.Level;
 
 public class PotionGB extends Potion
 {
