@@ -8,5 +8,5 @@ import net.minecraftforge.oredict.OreDictionary;
 
 public class ModManager
 {
-   public static void init() {}
+    public static void init() {}
 }

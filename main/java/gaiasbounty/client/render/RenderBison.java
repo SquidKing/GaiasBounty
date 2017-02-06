@@ -8,14 +8,14 @@ import net.minecraft.util.ResourceLocation;
 
 public class RenderBison extends RenderLiving
 {
-   public RenderBison(ModelBase model, float f)
-   {
-      super(model, f);
-   }
+    public RenderBison(ModelBase model, float f)
+    {
+        super(model, f);
+    }
 
-   @Override
-   protected ResourceLocation getEntityTexture(Entity bison)
-   {
-      return new ResourceLocation(Reference.MOD_ID, "textures/mobs/bison.png");
-   }
+    @Override
+    protected ResourceLocation getEntityTexture(Entity bison)
+    {
+        return new ResourceLocation(Reference.MOD_ID, "textures/mobs/bison.png");
+    }
 }

@@ -23,53 +23,53 @@ import cpw.mods.fml.common.network.NetworkRegistry;
 
 public class CommonProxy implements IGuiHandler
 {
-   public void preInit(FMLPreInitializationEvent event)
-   {
-      ConfigManager.init(event.getSuggestedConfigurationFile());
-      PotionGB.init();
-      BlockManager.addBlocks();
-      ItemManager.addItems();
-      EventManager.init();
-      VillageManager.init();
-   }
-   
-   public void init(FMLInitializationEvent event)
-   {
-      this.registerRenderers();
-      EntityManager.registerEntities();
-      TileEntityManager.register();
-      BlockManager.setBlockMiscData();
-      WorldGenManager.init();
-      NetworkRegistry.INSTANCE.registerGuiHandler(GaiasBounty.instance, this);
-      RecipeManager.init();
-   }
-   
-   public void postInit(FMLPostInitializationEvent event)
-   {
-      EntityManager.registerEntitySpawn();
-      WorldGenManager.createBiomeAssociations();
-      ModManager.init();
-   }
-   
-   public void registerRenderers() {}
+    public void preInit(FMLPreInitializationEvent event)
+    {
+        ConfigManager.init(event.getSuggestedConfigurationFile());
+        PotionGB.init();
+        BlockManager.addBlocks();
+        ItemManager.addItems();
+        EventManager.init();
+        VillageManager.init();
+    }
 
-   @Override
-   public Object getServerGuiElement(int id, EntityPlayer player, World world,
-            int x, int y, int z)
-   {
-      TileEntity tile = world.getTileEntity(x, y, z);
-      
-      switch (id)
-      {
-         default:
-            return null;
-      }
-   }
+    public void init(FMLInitializationEvent event)
+    {
+        this.registerRenderers();
+        EntityManager.registerEntities();
+        TileEntityManager.register();
+        BlockManager.setBlockMiscData();
+        WorldGenManager.init();
+        NetworkRegistry.INSTANCE.registerGuiHandler(GaiasBounty.instance, this);
+        RecipeManager.init();
+    }
 
-   @Override
-   public Object getClientGuiElement(int id, EntityPlayer player, World world,
-            int x, int y, int z)
-   {
-      return null;
-   }
+    public void postInit(FMLPostInitializationEvent event)
+    {
+        EntityManager.registerEntitySpawn();
+        WorldGenManager.createBiomeAssociations();
+        ModManager.init();
+    }
+
+    public void registerRenderers() {}
+
+    @Override
+    public Object getServerGuiElement(int id, EntityPlayer player, World world,
+                                      int x, int y, int z)
+    {
+        TileEntity tile = world.getTileEntity(x, y, z);
+
+        switch (id)
+        {
+            default:
+                return null;
+        }
+    }
+
+    @Override
+    public Object getClientGuiElement(int id, EntityPlayer player, World world,
+                                      int x, int y, int z)
+    {
+        return null;
+    }
 }

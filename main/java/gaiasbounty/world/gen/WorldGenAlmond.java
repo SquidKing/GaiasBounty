@@ -12,36 +12,36 @@ import net.minecraftforge.common.BiomeDictionary.Type;
 
 /**
  * Creates almond trees during chunk gen. Almond trees can grow in temperate or hot normal humidity, non-savannah plains biomes.
- * 
+ *
  * @author Alex Smith
  */
 public class WorldGenAlmond extends WorldGenTreeBase
 {
-   private static final WorldGenerator GENERATOR = new TreeGenAlmond();
-   
-   @Override
-   public boolean isSpawnConfigured()
-   {
-      return ConfigManager.canGenTreeAlmond;
-   }
+    private static final WorldGenerator GENERATOR = new TreeGenAlmond();
 
-   @Override
-   public boolean isValidSpawnBiome(BiomeGenBase biome)
-   {
-      return BiomeDictionary.isBiomeOfType(biome, Type.PLAINS) && !(BiomeDictionary.isBiomeOfType(biome, Type.COLD)
-          || BiomeDictionary.isBiomeOfType(biome, Type.WET) || BiomeDictionary.isBiomeOfType(biome, Type.DRY)
-          || BiomeDictionary.isBiomeOfType(biome, Type.SAVANNA));
-   }
+    @Override
+    public boolean isSpawnConfigured()
+    {
+        return ConfigManager.canGenTreeAlmond;
+    }
 
-   @Override
-   public boolean canSpawnRandom(Random random)
-   {
-      return 0 == random.nextInt(40);
-   }
+    @Override
+    public boolean isValidSpawnBiome(BiomeGenBase biome)
+    {
+        return BiomeDictionary.isBiomeOfType(biome, Type.PLAINS) && !(BiomeDictionary.isBiomeOfType(biome, Type.COLD)
+                || BiomeDictionary.isBiomeOfType(biome, Type.WET) || BiomeDictionary.isBiomeOfType(biome, Type.DRY)
+                || BiomeDictionary.isBiomeOfType(biome, Type.SAVANNA));
+    }
 
-   @Override
-   protected WorldGenerator getGenerator()
-   {
-      return GENERATOR;
-   }
+    @Override
+    public boolean canSpawnRandom(Random random)
+    {
+        return 0 == random.nextInt(40);
+    }
+
+    @Override
+    protected WorldGenerator getGenerator()
+    {
+        return GENERATOR;
+    }
 }

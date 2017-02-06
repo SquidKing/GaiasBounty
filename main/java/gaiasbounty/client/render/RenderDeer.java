@@ -8,14 +8,14 @@ import net.minecraft.util.ResourceLocation;
 
 public class RenderDeer extends RenderLiving
 {
-   public RenderDeer(ModelBase model, float f)
-   {
-      super(model, f);
-   }
+    public RenderDeer(ModelBase model, float f)
+    {
+        super(model, f);
+    }
 
-   @Override
-   protected ResourceLocation getEntityTexture(Entity deer)
-   {
-      return new ResourceLocation(Reference.MOD_ID, "textures/mobs/deer.png");
-   }
+    @Override
+    protected ResourceLocation getEntityTexture(Entity deer)
+    {
+        return new ResourceLocation(Reference.MOD_ID, "textures/mobs/deer.png");
+    }
 }

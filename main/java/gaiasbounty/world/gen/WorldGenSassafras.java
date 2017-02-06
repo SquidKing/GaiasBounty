@@ -12,38 +12,38 @@ import net.minecraftforge.common.BiomeDictionary.Type;
 
 /**
  * Creates sassafras trees during chunk gen. Sassafras trees can grow in temperate or cold, normal humidity non-hilly forest or plains biomes.
- * 
+ *
  * @author Alex Smith
  */
 public class WorldGenSassafras extends WorldGenTreeBase
 {
-   private static final WorldGenerator GENERATOR = new TreeGenSassafras();
-   
-   @Override
-   public boolean isSpawnConfigured()
-   {
-      return ConfigManager.canGenTreeSassafras;
-   }
+    private static final WorldGenerator GENERATOR = new TreeGenSassafras();
 
-   @Override
-   public boolean isValidSpawnBiome(BiomeGenBase biome)
-   {
-      return (BiomeDictionary.isBiomeOfType(biome, Type.FOREST) || BiomeDictionary.isBiomeOfType(biome, Type.PLAINS))
-          && !(BiomeDictionary.isBiomeOfType(biome, Type.HOT) || BiomeDictionary.isBiomeOfType(biome, Type.WET)
-          || BiomeDictionary.isBiomeOfType(biome, Type.DRY) || BiomeDictionary.isBiomeOfType(biome, Type.SAVANNA)
-          || BiomeDictionary.isBiomeOfType(biome, Type.HILLS) || BiomeDictionary.isBiomeOfType(biome, Type.MOUNTAIN)
-          || BiomeDictionary.isBiomeOfType(biome, Type.CONIFEROUS));
-   }
+    @Override
+    public boolean isSpawnConfigured()
+    {
+        return ConfigManager.canGenTreeSassafras;
+    }
 
-   @Override
-   public boolean canSpawnRandom(Random random)
-   {
-      return 0 == random.nextInt(40);
-   }
+    @Override
+    public boolean isValidSpawnBiome(BiomeGenBase biome)
+    {
+        return (BiomeDictionary.isBiomeOfType(biome, Type.FOREST) || BiomeDictionary.isBiomeOfType(biome, Type.PLAINS))
+                && !(BiomeDictionary.isBiomeOfType(biome, Type.HOT) || BiomeDictionary.isBiomeOfType(biome, Type.WET)
+                || BiomeDictionary.isBiomeOfType(biome, Type.DRY) || BiomeDictionary.isBiomeOfType(biome, Type.SAVANNA)
+                || BiomeDictionary.isBiomeOfType(biome, Type.HILLS) || BiomeDictionary.isBiomeOfType(biome, Type.MOUNTAIN)
+                || BiomeDictionary.isBiomeOfType(biome, Type.CONIFEROUS));
+    }
 
-   @Override
-   protected WorldGenerator getGenerator()
-   {
-      return GENERATOR;
-   }
+    @Override
+    public boolean canSpawnRandom(Random random)
+    {
+        return 0 == random.nextInt(40);
+    }
+
+    @Override
+    protected WorldGenerator getGenerator()
+    {
+        return GENERATOR;
+    }
 }

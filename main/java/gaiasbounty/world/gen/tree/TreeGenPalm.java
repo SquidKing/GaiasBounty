@@ -10,10 +10,10 @@ import net.minecraft.world.gen.feature.WorldGenerator;
 
 public class TreeGenPalm extends WorldGenerator
 {
-   @Override
-   public boolean generate(World world, Random rand, int x, int y, int z)
-   {
-      return ShapeGenTreePalm.instance.generate(world, rand, x, y, z,
-               BlockManager.logs5, 3, BlockManager.leaves5, 3);
-   }
+    @Override
+    public boolean generate(World world, Random rand, int x, int y, int z)
+    {
+        return ShapeGenTreePalm.instance.generate(world, rand, x, y, z,
+                BlockManager.logs5, 3, BlockManager.leaves5, 3);
+    }
 }

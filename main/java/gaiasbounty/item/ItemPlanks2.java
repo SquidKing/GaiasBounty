@@ -6,10 +6,10 @@ import net.minecraft.block.Block;
 
 public class ItemPlanks2 extends ItemMultiBlock
 {
-   public ItemPlanks2(Block block)
-   {
-      super(block);
-      subNames = BlockManager.planks2Subtypes;
-      setUnlocalizedName(Reference.GB_NAME_PREFIX + "planks2");
-   }
+    public ItemPlanks2(Block block)
+    {
+        super(block);
+        subNames = BlockManager.planks2Subtypes;
+        setUnlocalizedName(Reference.GB_NAME_PREFIX + "planks2");
+    }
 }

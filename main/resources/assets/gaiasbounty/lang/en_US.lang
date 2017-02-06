@@ -1,6 +1,6 @@
-itemGroup.gaiasbounty.creative.food=GB: Food & Seeds
+itemGroup.gaiasbounty.creative.food=GB: Produce & Meals
 itemGroup.gaiasbounty.creative.misc=GB: Other Items
-itemGroup.gaiasbounty.creative.plant=GB: Trees, Wood & Plants
+itemGroup.gaiasbounty.creative.plant=GB: Plants & Wood
 
 tile.gaiasbounty.saplings1.apple.name=Apple Sapling
 tile.gaiasbounty.saplings1.peach.name=Peach Sapling
@@ -105,19 +105,6 @@ tile.gaiasbounty.planks2.maple.name=Maple Wood Planks
 
 tile.gaiasbounty.trellis.name=Trellis
 
-item.gaiasbounty.plantable_food.grapesRed.name=Red Grapes
-item.gaiasbounty.plantable_food.grapesGreen.name=Green Grapes
-item.gaiasbounty.plantable_food.kiwi.name=Kiwifruit
-item.gaiasbounty.plantable_food.rice.name=Rice
-item.gaiasbounty.plantable_food.turnip.name=Turnip
-item.gaiasbounty.plantable_food.beet.name=Beet
-item.gaiasbounty.plantable_food.peanut.name=Peanut
-item.gaiasbounty.plantable_food.truffle.name=Truffle
-item.gaiasbounty.plantable_food.pea.name=Peas
-item.gaiasbounty.plantable_food.cucumber.name=Cucumber
-item.gaiasbounty.plantable_food.zucchini.name=Zucchini
-item.gaiasbounty.plantable_food.beans.name=Beans
-
 item.gaiasbounty.food_crop.peach.name=Peach
 item.gaiasbounty.food_crop.cherry.name=Cherry
 item.gaiasbounty.food_crop.banana.name=Banana
@@ -136,6 +123,12 @@ item.gaiasbounty.food_crop.almond.name=Almond
 item.gaiasbounty.food_crop.macadamia.name=Macadamia
 item.gaiasbounty.food_crop.olive.name=Olive
 item.gaiasbounty.food_crop.coconut.name=Coconut
+item.gaiasbounty.food_crop.grapes_red.name=Red Grapes
+item.gaiasbounty.food_crop.grapes_green.name=Green Grapes
+item.gaiasbounty.food_crop.kiwi.name=Kiwifruit
+item.gaiasbounty.food_crop.cantaloupe.name=Cantaloupe
+item.gaiasbounty.food_crop.honeydew.name=Honeydew
+item.gaiasbounty.food_crop.gourd.name=Gourd
 item.gaiasbounty.food_crop.strawberry.name=Strawberry
 item.gaiasbounty.food_crop.raspberry.name=Raspberry
 item.gaiasbounty.food_crop.blackberry.name=Blackberry
@@ -143,13 +136,17 @@ item.gaiasbounty.food_crop.blueberry.name=Blueberry
 item.gaiasbounty.food_crop.saskatoon.name=Saskatoon Berry
 item.gaiasbounty.food_crop.cranberry.name=Cranberry
 item.gaiasbounty.food_crop.pineapple.name=Pineapple
-item.gaiasbounty.food_crop.cantaloupe.name=Cantaloupe
-item.gaiasbounty.food_crop.honeydew.name=Honeydew
-item.gaiasbounty.food_crop.gourd.name=Gourd
-item.gaiasbounty.food_crop.raisin.name=Raisins
-item.gaiasbounty.food_crop.sultana.name=Sultanas
-item.gaiasbounty.food_crop.corn.name=Corn
 item.gaiasbounty.food_crop.tomato.name=Tomato
+item.gaiasbounty.food_crop.rice.name=Rice
+item.gaiasbounty.food_crop.beet.name=Beet
+item.gaiasbounty.food_crop.turnip.name=Turnip
+item.gaiasbounty.food_crop.peanut.name=Peanut
+item.gaiasbounty.food_crop.truffle.name=Truffle
+item.gaiasbounty.food_crop.pea.name=Peas
+item.gaiasbounty.food_crop.cucumber.name=Cucumber
+item.gaiasbounty.food_crop.zucchini.name=Zucchini
+item.gaiasbounty.food_crop.beans.name=Beans
+item.gaiasbounty.food_crop.corn.name=Corn
 item.gaiasbounty.food_crop.lettuce.name=Lettuce
 item.gaiasbounty.food_crop.celery.name=Celery
 item.gaiasbounty.food_crop.cabbage.name=Cabbage
@@ -183,12 +180,14 @@ item.gaiasbounty.seafood.squid_cooked.name=Cooked Squid
 item.gaiasbounty.seafood.prawn_raw.name=Shrimp
 item.gaiasbounty.seafood.prawn_cooked.name=Cooked Shrimp
 
-item.gaiasbounty.food_ingredient.cheese.name=Cheese
 item.gaiasbounty.food_ingredient.pickle.name=Pickle
-item.gaiasbounty.food_ingredient.caramel.name=Caramel
+item.gaiasbounty.food_ingredient.raisin.name=Raisins
+item.gaiasbounty.food_ingredient.sultana.name=Sultanas
 item.gaiasbounty.food_ingredient.butter.name=Butter
+item.gaiasbounty.food_ingredient.cheese.name=Cheese
+item.gaiasbounty.food_ingredient.caramel.name=Caramel
 item.gaiasbounty.food_ingredient.chocolate.name=Chocolate
-item.gaiasbounty.food_ingredient.drop_honey.name=Honey
+item.gaiasbounty.food_ingredient.raw_egg.name=Raw Egg
 
 item.gaiasbounty.prepared_food.sushi_fish.name=Cod Sushi
 item.gaiasbounty.prepared_food.sushi_salmon.name=Salmon Sushi
@@ -240,6 +239,7 @@ item.gaiasbounty.material.vanilla.name=Vanilla Beans
 item.gaiasbounty.material.garlic.name=Garlic
 item.gaiasbounty.material.cotton.name=Cotton Ball
 item.gaiasbounty.material.flax.name=Flax Fiber
+item.gaiasbounty.material.handle_rubber.name=Rubber Handle
 
 item.gaiasbounty.spigot.name=Spigot
 item.gaiasbounty.knife.name=Knife
@@ -248,8 +248,12 @@ item.gaiasbounty.hand_churn.name=Hand Churn
 item.gaiasbounty.tool.remaininguses=%d use(s) remaining
 
 entity.gaiasbounty.bison.name=Bison
+gaiasbounty.bison=Bison
 entity.gaiasbounty.turkey.name=Turkey
+gaiasbounty.turkey=Turkey
 entity.gaiasbounty.duck.name=Duck
+gaiasbounty.duck=Duck
 entity.gaiasbounty.deer.name=Deer
+gaiasbounty.deer=Deer
 
 potion.gaiasbounty.gas=Gas

@@ -17,30 +17,30 @@ import cpw.mods.fml.common.registry.VillagerRegistry.IVillageTradeHandler;
 
 public class VillagerGrocer implements IVillageTradeHandler
 {
-   public static VillagerGrocer instance = new VillagerGrocer();
-   private static boolean increaseHoneyChance = false;
-   private static int villagerId;
-   
-   private VillagerGrocer() {}
-   
-   public static void init(int id)
-   {
-      villagerId = id;
-      increaseHoneyChance = !Loader.isModLoaded("Forestry");
-      VillagerRegistry.instance().registerVillageTradeHandler(villagerId, instance);
-      VillagerRegistry.instance().registerVillagerId(villagerId);
-      VillagerRegistry.instance().registerVillagerSkin(villagerId,
-               new ResourceLocation(Reference.MOD_ID, "textures/villagers/grocer.png"));
-   }
+    public static VillagerGrocer instance = new VillagerGrocer();
+    private static boolean increaseHoneyChance = false;
+    private static int villagerId;
 
-   @Override
-   public void manipulateTradesForVillager(EntityVillager villager,
-            MerchantRecipeList recipes, Random rand)
-   {
-      if (villager.getProfession() == villagerId)
-      {
-         recipes.addToListWithCheck(new MerchantRecipe(new ItemStack(Items.emerald, 1),
-                  new ItemStack(ItemManager.seafood, 7 + rand.nextInt(2), 2)));
-      }
-   }
+    private VillagerGrocer() {}
+
+    public static void init(int id)
+    {
+        villagerId = id;
+        increaseHoneyChance = !Loader.isModLoaded("Forestry");
+        VillagerRegistry.instance().registerVillageTradeHandler(villagerId, instance);
+        VillagerRegistry.instance().registerVillagerId(villagerId);
+        VillagerRegistry.instance().registerVillagerSkin(villagerId,
+                new ResourceLocation(Reference.MOD_ID, "textures/villagers/grocer.png"));
+    }
+
+    @Override
+    public void manipulateTradesForVillager(EntityVillager villager,
+                                            MerchantRecipeList recipes, Random rand)
+    {
+        if (villager.getProfession() == villagerId)
+        {
+            recipes.addToListWithCheck(new MerchantRecipe(new ItemStack(Items.emerald, 1),
+                    new ItemStack(ItemManager.seafood, 7 + rand.nextInt(2), 2)));
+        }
+    }
 }

@@ -11,27 +11,27 @@ import net.minecraft.util.ResourceLocation;
 
 public class RenderDuck extends RenderLiving
 {
-   public RenderDuck(ModelBase model, float f)
-   {
-      super(model, f);
-   }
-   
-   protected float handleRotationFloat(EntityDuck duck, float partialTickTime)
-   {
-       float f1 = duck.fallDistPrev + (duck.fallDist - duck.fallDistPrev) * partialTickTime;
-       float f2 = duck.destPosPrev + (duck.destPos - duck.destPosPrev) * partialTickTime;
-       return (MathHelper.sin(f1) + 1.0F) * f2;
-   }
-   
-   @Override
-   protected float handleRotationFloat(EntityLivingBase duck, float partialTickTime)
-   {
-       return this.handleRotationFloat((EntityDuck)duck, partialTickTime);
-   }
+    public RenderDuck(ModelBase model, float f)
+    {
+        super(model, f);
+    }
 
-   @Override
-   protected ResourceLocation getEntityTexture(Entity duck)
-   {
-      return new ResourceLocation(Reference.MOD_ID, "textures/mobs/duck.png");
-   }
+    protected float handleRotationFloat(EntityDuck duck, float partialTickTime)
+    {
+        float f1 = duck.fallDistPrev + (duck.fallDist - duck.fallDistPrev) * partialTickTime;
+        float f2 = duck.destPosPrev + (duck.destPos - duck.destPosPrev) * partialTickTime;
+        return (MathHelper.sin(f1) + 1.0F) * f2;
+    }
+
+    @Override
+    protected float handleRotationFloat(EntityLivingBase duck, float partialTickTime)
+    {
+        return this.handleRotationFloat((EntityDuck) duck, partialTickTime);
+    }
+
+    @Override
+    protected ResourceLocation getEntityTexture(Entity duck)
+    {
+        return new ResourceLocation(Reference.MOD_ID, "textures/mobs/duck.png");
+    }
 }

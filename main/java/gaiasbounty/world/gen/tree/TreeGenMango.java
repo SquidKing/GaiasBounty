@@ -10,10 +10,10 @@ import net.minecraft.world.gen.feature.WorldGenerator;
 
 public class TreeGenMango extends WorldGenerator
 {
-   @Override
-   public boolean generate(World world, Random rand, int x, int y, int z)
-   {
-      return ShapeGenTreeBig.instance.generate(world, rand, x, y, z,
-               BlockManager.logs3, 0, BlockManager.leaves3, 0);
-   }
+    @Override
+    public boolean generate(World world, Random rand, int x, int y, int z)
+    {
+        return ShapeGenTreeBig.instance.generate(world, rand, x, y, z,
+                BlockManager.logs3, 0, BlockManager.leaves3, 0);
+    }
 }

@@ -6,10 +6,10 @@ import net.minecraft.block.Block;
 
 public class ItemLeaves2 extends ItemMultiBlock
 {
-   public ItemLeaves2(Block block)
-   {
-      super(block);
-      subNames = BlockManager.tree2Subtypes;
-      setUnlocalizedName(Reference.GB_NAME_PREFIX + "leaves2");
-   }
+    public ItemLeaves2(Block block)
+    {
+        super(block);
+        subNames = BlockManager.tree2Subtypes;
+        setUnlocalizedName(Reference.GB_NAME_PREFIX + "leaves2");
+    }
 }

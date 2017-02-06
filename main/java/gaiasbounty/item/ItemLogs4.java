@@ -6,10 +6,10 @@ import net.minecraft.block.Block;
 
 public class ItemLogs4 extends ItemMultiBlock
 {
-   public ItemLogs4(Block block)
-   {
-      super(block);
-      subNames = BlockManager.tree4Subtypes;
-      setUnlocalizedName(Reference.GB_NAME_PREFIX + "logs4");
-   }
+    public ItemLogs4(Block block)
+    {
+        super(block);
+        subNames = BlockManager.tree4Subtypes;
+        setUnlocalizedName(Reference.GB_NAME_PREFIX + "logs4");
+    }
 }

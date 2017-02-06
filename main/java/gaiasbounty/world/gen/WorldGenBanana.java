@@ -12,35 +12,35 @@ import net.minecraftforge.common.BiomeDictionary.Type;
 
 /**
  * Creates banana trees during chunk gen. Banana trees can grow in hot, humid jungle biomes.
- * 
+ *
  * @author Alex Smith
  */
 public class WorldGenBanana extends WorldGenTreeBase
 {
-   private static final WorldGenerator GENERATOR = new TreeGenBanana();
-   
-   @Override
-   public boolean isSpawnConfigured()
-   {
-      return ConfigManager.canGenTreeBanana;
-   }
+    private static final WorldGenerator GENERATOR = new TreeGenBanana();
 
-   @Override
-   public boolean isValidSpawnBiome(BiomeGenBase biome)
-   {
-      return BiomeDictionary.isBiomeOfType(biome, Type.JUNGLE) && BiomeDictionary.isBiomeOfType(biome, Type.HOT)
-          && BiomeDictionary.isBiomeOfType(biome, Type.WET);
-   }
+    @Override
+    public boolean isSpawnConfigured()
+    {
+        return ConfigManager.canGenTreeBanana;
+    }
 
-   @Override
-   public boolean canSpawnRandom(Random random)
-   {
-      return 0 == random.nextInt(20);
-   }
+    @Override
+    public boolean isValidSpawnBiome(BiomeGenBase biome)
+    {
+        return BiomeDictionary.isBiomeOfType(biome, Type.JUNGLE) && BiomeDictionary.isBiomeOfType(biome, Type.HOT)
+                && BiomeDictionary.isBiomeOfType(biome, Type.WET);
+    }
 
-   @Override
-   protected WorldGenerator getGenerator()
-   {
-      return GENERATOR;
-   }
+    @Override
+    public boolean canSpawnRandom(Random random)
+    {
+        return 0 == random.nextInt(20);
+    }
+
+    @Override
+    protected WorldGenerator getGenerator()
+    {
+        return GENERATOR;
+    }
 }

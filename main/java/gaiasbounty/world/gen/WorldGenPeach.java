@@ -12,34 +12,34 @@ import net.minecraftforge.common.BiomeDictionary.Type;
 
 /**
  * Creates peach trees during chunk gen. Peach trees can grow in swamp biomes.
- * 
+ *
  * @author Alex Smith
  */
 public class WorldGenPeach extends WorldGenTreeBase
 {
-   private static final WorldGenerator GENERATOR = new TreeGenPeach();
-   
-   @Override
-   public boolean isSpawnConfigured()
-   {
-      return ConfigManager.canGenTreePeach;
-   }
+    private static final WorldGenerator GENERATOR = new TreeGenPeach();
 
-   @Override
-   public boolean isValidSpawnBiome(BiomeGenBase biome)
-   {
-      return BiomeDictionary.isBiomeOfType(biome, Type.SWAMP);
-   }
+    @Override
+    public boolean isSpawnConfigured()
+    {
+        return ConfigManager.canGenTreePeach;
+    }
 
-   @Override
-   public boolean canSpawnRandom(Random random)
-   {
-      return 0 == random.nextInt(30);
-   }
+    @Override
+    public boolean isValidSpawnBiome(BiomeGenBase biome)
+    {
+        return BiomeDictionary.isBiomeOfType(biome, Type.SWAMP);
+    }
 
-   @Override
-   protected WorldGenerator getGenerator()
-   {
-      return GENERATOR;
-   }
+    @Override
+    public boolean canSpawnRandom(Random random)
+    {
+        return 0 == random.nextInt(30);
+    }
+
+    @Override
+    protected WorldGenerator getGenerator()
+    {
+        return GENERATOR;
+    }
 }

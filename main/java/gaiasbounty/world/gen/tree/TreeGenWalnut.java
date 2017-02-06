@@ -10,10 +10,10 @@ import net.minecraft.world.gen.feature.WorldGenerator;
 
 public class TreeGenWalnut extends WorldGenerator
 {
-   @Override
-   public boolean generate(World world, Random rand, int x, int y, int z)
-   {
-      return ShapeGenTreeJumbo.instance.generate(world, rand, x, y, z,
-               BlockManager.logs4, 0, BlockManager.leaves4, 0);
-   }
+    @Override
+    public boolean generate(World world, Random rand, int x, int y, int z)
+    {
+        return ShapeGenTreeJumbo.instance.generate(world, rand, x, y, z,
+                BlockManager.logs4, 0, BlockManager.leaves4, 0);
+    }
 }

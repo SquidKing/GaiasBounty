@@ -16,36 +16,38 @@ import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 
 @Mod(modid = Reference.MOD_ID, name = Reference.MOD_NAME, version = Reference.VERSION)
 public class GaiasBounty
-{  
-   @Instance(Reference.MOD_ID) public static GaiasBounty instance;
-   @SidedProxy(clientSide = "gaiasbounty.client.ClientProxy",
-            serverSide = "gaiasbounty.common.CommonProxy") public static CommonProxy proxy;
-   
-   @EventHandler
-   public void preInit(FMLPreInitializationEvent event)
-   {
-      proxy.preInit(event);
-   }
-   
-   @EventHandler
-   public void init(FMLInitializationEvent event)
-   {
-      proxy.init(event);
-   }
-   
-   @EventHandler
-   public void postInit(FMLPostInitializationEvent event)
-   {
-      proxy.postInit(event);
-   }
-   
-   public static void consoleMessage(String msg, Object... data)
-   {
-      consoleMessage(Level.INFO, msg, data);
-   }
-   
-   public static void consoleMessage(Level level, String msg, Object... data)
-   {
-      FMLLog.log(Reference.MOD_NAME, level, msg, data);
-   }
+{
+    @Instance(Reference.MOD_ID)
+    public static GaiasBounty instance;
+    @SidedProxy(clientSide = "gaiasbounty.client.ClientProxy",
+            serverSide = "gaiasbounty.common.CommonProxy")
+    public static CommonProxy proxy;
+
+    @EventHandler
+    public void preInit(FMLPreInitializationEvent event)
+    {
+        proxy.preInit(event);
+    }
+
+    @EventHandler
+    public void init(FMLInitializationEvent event)
+    {
+        proxy.init(event);
+    }
+
+    @EventHandler
+    public void postInit(FMLPostInitializationEvent event)
+    {
+        proxy.postInit(event);
+    }
+
+    public static void consoleMessage(String msg, Object... data)
+    {
+        consoleMessage(Level.INFO, msg, data);
+    }
+
+    public static void consoleMessage(Level level, String msg, Object... data)
+    {
+        FMLLog.log(Reference.MOD_NAME, level, msg, data);
+    }
 }
