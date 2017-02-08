@@ -203,22 +203,18 @@ public class BlockManager
                 CreativeTabsGB.MISC);
         GameRegistry.registerBlock(basaltSand, "basaltSand");
 
-        cropFlax = new BlockCropsBase("flax").setBlockName(
-                Reference.GB_NAME_PREFIX + "cropFlax").setCreativeTab(
-                CreativeTabsGB.MISC);
+        cropFlax = new BlockCropsBase("flax").setBlockName(Reference.GB_NAME_PREFIX + "cropFlax");
         GameRegistry.registerBlock(cropFlax, "cropFlax");
-        cropGinger = new BlockCropsBase("ginger").setBlockName(
-                Reference.GB_NAME_PREFIX + "cropGinger").setCreativeTab(
-                CreativeTabsGB.MISC);
+        cropGinger = new BlockCropsBase("ginger").setBlockName(Reference.GB_NAME_PREFIX + "cropGinger");
         GameRegistry.registerBlock(cropGinger, "cropGinger");
     }
 
     public static void setBlockMiscData()
     {
-        ((BlockCropsBase) cropFlax).setSeedItem(new ItemStack(ItemManager.material, 1, 10))
+        ((BlockCropsBase) cropFlax).setSeedItem(new ItemStack(ItemManager.seedFlax, 1))
                 .setProduceItem(new ItemStack(ItemManager.material, 1, 11));
-        ((BlockCropsBase) cropGinger).setSeedItem(new ItemStack(ItemManager.material, 1, 8))
-                .setProduceItem(new ItemStack(ItemManager.material, 1, 9));
+        ((BlockCropsBase) cropGinger).setSeedItem(new ItemStack(ItemManager.seedGinger, 1))
+                .setProduceItem(new ItemStack(ItemManager.material, 1, 12));
 
         Blocks.fire.setFireInfo(logs1, 30, 60);
         Blocks.fire.setFireInfo(logs2, 30, 60);

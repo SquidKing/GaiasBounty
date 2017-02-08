@@ -239,11 +239,14 @@ item.gaiasbounty.material.vanilla.name=Vanilla Beans
 item.gaiasbounty.material.garlic.name=Garlic
 item.gaiasbounty.material.cotton.name=Cotton Ball
 item.gaiasbounty.material.flax.name=Flax Fiber
-item.gaiasbounty.material.handle_rubber.name=Rubber Handle
+item.gaiasbounty.material.ginger.name=Ginger
 
 item.gaiasbounty.spigot.name=Spigot
 item.gaiasbounty.knife.name=Knife
 item.gaiasbounty.hand_churn.name=Hand Churn
+
+item.gaiasbounty.seeds_flax.name=Flax Seeds
+item.gaiasbounty.seeds_ginger.name=Ginger Seeds
 
 item.gaiasbounty.tool.remaininguses=%d use(s) remaining
 

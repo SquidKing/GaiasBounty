@@ -22,7 +22,6 @@ public class ItemToolGeneric extends Item
     @SideOnly(Side.CLIENT)
     public void registerIcons(IIconRegister icons)
     {
-        this.itemIcon = icons.registerIcon(Reference.GB_TEX_PREFIX
-                + this.texName);
+        this.itemIcon = icons.registerIcon(Reference.GB_TEX_PREFIX + this.texName);
     }
 }

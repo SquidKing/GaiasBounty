@@ -310,6 +310,7 @@ public class OreDictEntries
         ItemStack garlic = new ItemStack(ItemManager.material, 1, 9);
         ItemStack cotton = new ItemStack(ItemManager.material, 1, 10);
         ItemStack flax = new ItemStack(ItemManager.material, 1, 11);
+        ItemStack ginger = new ItemStack(ItemManager.material, 1, 12);
 
         OreDictionary.registerOre("cropMesquitebean", mesquite);
         OreDictionary.registerOre("charcoal", mesquiteCharcoal);
@@ -321,11 +322,12 @@ public class OreDictEntries
         OreDictionary.registerOre("cropVanillabean", vanilla);
         OreDictionary.registerOre("cropGarlic", garlic);
         OreDictionary.registerOre("cropCotton", cotton);
-        OreDictionary.registerOre("cropFlax", flax);
+        OreDictionary.registerOre("cropGinger", ginger);
 
         registerEntries("listAllherb", new ItemStack[] {
                 mint, garlic
         });
+        OreDictionary.registerOre("listAllspice", ginger);
     }
 
     private static void registerEntries(String name, ItemStack[] items)

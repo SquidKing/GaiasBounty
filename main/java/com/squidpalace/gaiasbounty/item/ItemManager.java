@@ -1,8 +1,10 @@
 package com.squidpalace.gaiasbounty.item;
 
+import com.squidpalace.gaiasbounty.block.BlockManager;
 import com.squidpalace.gaiasbounty.lib.CreativeTabsGB;
 import com.squidpalace.gaiasbounty.lib.Reference;
 import com.squidpalace.gaiasbounty.potion.PotionGB;
+import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
@@ -19,6 +21,9 @@ public class ItemManager
     public static Item spigot;
     public static Item knife;
     public static Item churn;
+
+    public static Item seedFlax;
+    public static Item seedGinger;
 
     public static void addItems()
     {
@@ -201,7 +206,7 @@ public class ItemManager
         material = new ItemMaterialMulti(
                 "mesquite", "charcoal_mesquite", "hops", "latex", "rubber",
                 "maple_sap", "leaf_tea", "leaf_mint", "vanilla", "garlic",
-                "cotton", "flax")
+                "cotton", "flax", "ginger")
                 .setUnlocalizedName(Reference.GB_NAME_PREFIX + "material")
                 .setCreativeTab(CreativeTabsGB.MISC);
         GameRegistry.registerItem(material, "material");
@@ -210,15 +215,21 @@ public class ItemManager
                 .setUnlocalizedName(Reference.GB_NAME_PREFIX + "spigot")
                 .setCreativeTab(CreativeTabsGB.MISC);
         GameRegistry.registerItem(spigot, "spigot");
-
         knife = new ItemCraftingTool(249, "knife")
                 .setUnlocalizedName(Reference.GB_NAME_PREFIX + "knife")
                 .setCreativeTab(CreativeTabsGB.MISC);
         GameRegistry.registerItem(knife, "knife");
-
         churn = new ItemCraftingTool(131, "hand_churn")
                 .setUnlocalizedName(Reference.GB_NAME_PREFIX + "hand_churn")
                 .setCreativeTab(CreativeTabsGB.MISC);
         GameRegistry.registerItem(churn, "hand_churn");
+
+        seedFlax = new ItemSeedsGeneric(BlockManager.cropFlax, Blocks.farmland, "seeds_flax")
+                .setUnlocalizedName(Reference.GB_NAME_PREFIX + "seeds_flax");
+        GameRegistry.registerItem(seedFlax, "seeds_flax");
+
+        seedGinger = new ItemSeedsGeneric(BlockManager.cropGinger, Blocks.farmland, "seeds_ginger")
+                .setUnlocalizedName(Reference.GB_NAME_PREFIX + "seeds_ginger");
+        GameRegistry.registerItem(seedGinger, "seeds_ginger");
     }
 }
