@@ -322,6 +322,7 @@ public class OreDictEntries
         OreDictionary.registerOre("cropVanillabean", vanilla);
         OreDictionary.registerOre("cropGarlic", garlic);
         OreDictionary.registerOre("cropCotton", cotton);
+        OreDictionary.registerOre("cropFlax", flax);
         OreDictionary.registerOre("cropGinger", ginger);
 
         registerEntries("listAllherb", new ItemStack[] {

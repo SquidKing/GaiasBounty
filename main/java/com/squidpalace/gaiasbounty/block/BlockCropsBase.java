@@ -13,6 +13,7 @@ import net.minecraft.block.IGrowable;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.init.Blocks;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.IBlockAccess;
@@ -26,29 +27,22 @@ public class BlockCropsBase extends BlockBush implements IGrowable
 {
     @SideOnly(Side.CLIENT)
     private IIcon[] icons;
-    private boolean use8Icons;
     private String cropType;
     private ItemStack produce;
     private ItemStack seeds;
     private float baseGrowthChanceModifier;
 
-    public BlockCropsBase(String cropType, boolean use8Icons, float baseGrowthChanceModifier)
+    public BlockCropsBase(String cropType, float baseGrowthChanceModifier)
     {
         super(Material.plants);
         this.setStepSound(soundTypeGrass);
         this.cropType = cropType;
-        this.use8Icons = use8Icons;
         this.baseGrowthChanceModifier = baseGrowthChanceModifier;
-    }
-
-    public BlockCropsBase(String cropType, boolean use8Icons)
-    {
-        this(cropType, use8Icons, 25.0f);
     }
 
     public BlockCropsBase(String cropType)
     {
-        this(cropType, false, 25.0f);
+        this(cropType, 25.0f);
     }
 
     public BlockCropsBase setProduceItem(ItemStack produce)
@@ -153,6 +147,15 @@ public class BlockCropsBase extends BlockBush implements IGrowable
    @SideOnly(Side.CLIENT)
    public void getSubBlocks(Item item, CreativeTabs tabs, List blockList) {}*/
 
+    /**
+     * Gets an item for the block being called on.
+     */
+    @SideOnly(Side.CLIENT)
+    public Item getItem(World world, int x, int y, int z)
+    {
+        return this.seeds.getItem();
+    }
+
     @Override
     @SideOnly(Side.CLIENT)
     public void registerBlockIcons(IIconRegister icons)
@@ -160,35 +163,7 @@ public class BlockCropsBase extends BlockBush implements IGrowable
         this.icons = new IIcon[8];
 
         for (int i = 0; i < 8; ++i)
-        {
-            int n = i;
-
-            if (!this.use8Icons)
-            {
-                switch (n)
-                {
-                    case 0:
-                    case 1:
-                        n = 0;
-                        break;
-                    case 2:
-                    case 3:
-                    case 4:
-                        n = 1;
-                        break;
-                    case 5:
-                    case 6:
-                        n = 2;
-                        break;
-                    case 7:
-                    default:
-                        n = 3;
-                }
-            }
-
-            this.icons[i] = icons.registerIcon(Reference.GB_TEX_PREFIX
-                    + "crop_" + this.cropType + "_" + n);
-        }
+            this.icons[i] = icons.registerIcon(Reference.GB_TEX_PREFIX + "crop_" + this.cropType + "_" + i);
     }
 
     @Override

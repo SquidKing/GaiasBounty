@@ -24,6 +24,12 @@ public class ItemManager
 
     public static Item seedFlax;
     public static Item seedGinger;
+    public static Item seedCorn;
+    public static Item seedGrapeGreen;
+    public static Item seedGrapeRed;
+    public static Item seedRice;
+    public static Item seedStrawberry;
+    public static Item seedTomato;
 
     public static void addItems()
     {
@@ -224,12 +230,30 @@ public class ItemManager
                 .setCreativeTab(CreativeTabsGB.MISC);
         GameRegistry.registerItem(churn, "hand_churn");
 
+        seedGrapeRed = new ItemSeedsGeneric(BlockManager.cropGrapeRed, Blocks.farmland, "seeds_grapes_red")
+                .setUnlocalizedName(Reference.GB_NAME_PREFIX + "seeds_grapes_red");
+        GameRegistry.registerItem(seedGrapeRed, "seeds_grapes_red");
+        seedGrapeGreen = new ItemSeedsGeneric(BlockManager.cropGrapeGreen, Blocks.farmland, "seeds_grapes_green")
+                .setUnlocalizedName(Reference.GB_NAME_PREFIX + "seeds_grapes_green");
+        GameRegistry.registerItem(seedGrapeGreen, "seeds_grapes_green");
+        seedStrawberry = new ItemSeedsGeneric(BlockManager.cropStrawberry, Blocks.farmland, "seeds_strawberry")
+                .setUnlocalizedName(Reference.GB_NAME_PREFIX + "seeds_strawberry");
+        GameRegistry.registerItem(seedStrawberry, "seeds_strawberry");
+        seedTomato = new ItemSeedsGeneric(BlockManager.cropTomato, Blocks.farmland, "seeds_tomato")
+                .setUnlocalizedName(Reference.GB_NAME_PREFIX + "seeds_tomato");
+        GameRegistry.registerItem(seedTomato, "seeds_tomato");
+        seedRice = new ItemSeedsGeneric(BlockManager.cropRice, Blocks.farmland, "seeds_rice")
+                .setUnlocalizedName(Reference.GB_NAME_PREFIX + "seeds_rice");
+        GameRegistry.registerItem(seedRice, "seeds_rice");
+        seedCorn = new ItemSeedsGeneric(BlockManager.cropCorn, Blocks.farmland, "seeds_corn")
+                .setUnlocalizedName(Reference.GB_NAME_PREFIX + "seeds_corn");
+        GameRegistry.registerItem(seedCorn, "seeds_corn");
         seedFlax = new ItemSeedsGeneric(BlockManager.cropFlax, Blocks.farmland, "seeds_flax")
                 .setUnlocalizedName(Reference.GB_NAME_PREFIX + "seeds_flax");
         GameRegistry.registerItem(seedFlax, "seeds_flax");
-
         seedGinger = new ItemSeedsGeneric(BlockManager.cropGinger, Blocks.farmland, "seeds_ginger")
                 .setUnlocalizedName(Reference.GB_NAME_PREFIX + "seeds_ginger");
         GameRegistry.registerItem(seedGinger, "seeds_ginger");
+
     }
 }

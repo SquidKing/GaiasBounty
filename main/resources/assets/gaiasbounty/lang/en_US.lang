@@ -105,6 +105,15 @@ tile.gaiasbounty.planks2.maple.name=Maple Wood Planks
 
 tile.gaiasbounty.trellis.name=Trellis
 
+tile.gaiasbounty.crop_grapes_green.name=Green Grape Plant
+tile.gaiasbounty.crop_grapes_red.name=Red Grape Plant
+tile.gaiasbounty.crop_strawberry.name=Strawberry Plant
+tile.gaiasbounty.crop_tomato.name=Tomato Plant
+tile.gaiasbounty.crop_rice.name=Rice Plant
+tile.gaiasbounty.crop_corn.name=Corn Plant
+tile.gaiasbounty.crop_flax.name=Flax Plant
+tile.gaiasbounty.crop_ginger.name=Ginger Plant
+
 item.gaiasbounty.food_crop.peach.name=Peach
 item.gaiasbounty.food_crop.cherry.name=Cherry
 item.gaiasbounty.food_crop.banana.name=Banana
@@ -245,6 +254,12 @@ item.gaiasbounty.spigot.name=Spigot
 item.gaiasbounty.knife.name=Knife
 item.gaiasbounty.hand_churn.name=Hand Churn
 
+item.gaiasbounty.seeds_grapes_green.name=Green Grape Seeds
+item.gaiasbounty.seeds_grapes_red.name=Red Grape Seeds
+item.gaiasbounty.seeds_strawberry.name=Strawberry Seeds
+item.gaiasbounty.seeds_tomato.name=Tomato Seeds
+item.gaiasbounty.seeds_rice.name=Rice Seeds
+item.gaiasbounty.seeds_corn.name=Corn Seeds
 item.gaiasbounty.seeds_flax.name=Flax Seeds
 item.gaiasbounty.seeds_ginger.name=Ginger Seeds
 
