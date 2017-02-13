@@ -1,9 +1,11 @@
 package com.squidpalace.gaiasbounty.item;
 
+import com.squidpalace.gaiasbounty.block.BlockCropsBase;
 import com.squidpalace.gaiasbounty.block.BlockManager;
 import com.squidpalace.gaiasbounty.lib.CreativeTabsGB;
 import com.squidpalace.gaiasbounty.lib.Reference;
 import com.squidpalace.gaiasbounty.potion.PotionGB;
+import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.potion.Potion;
@@ -22,14 +24,45 @@ public class ItemManager
     public static Item knife;
     public static Item churn;
 
-    public static Item seedFlax;
-    public static Item seedGinger;
-    public static Item seedCorn;
-    public static Item seedGrapeGreen;
-    public static Item seedGrapeRed;
-    public static Item seedRice;
-    public static Item seedStrawberry;
-    public static Item seedTomato;
+    public static ItemSeedsGeneric seedGrapeRed;
+    public static ItemSeedsGeneric seedGrapeGreen;
+    public static ItemSeedsGeneric seedKiwi;
+    public static ItemSeedsGeneric seedStrawberry;
+    public static ItemSeedsGeneric seedRaspberry;
+    public static ItemSeedsGeneric seedBlackberry;
+    public static ItemSeedsGeneric seedBlueberry;
+    public static ItemSeedsGeneric seedSaskatoon;
+    public static ItemSeedsGeneric seedCranberry;
+    public static ItemSeedsGeneric seedPineapple;
+    public static ItemSeedsGeneric seedTomato;
+    public static ItemSeedsGeneric seedRice;
+    public static ItemSeedsGeneric seedBeet;
+    public static ItemSeedsGeneric seedTurnip;
+    public static ItemSeedsGeneric seedPeanut;
+    public static ItemSeedsGeneric seedPea;
+    public static ItemSeedsGeneric seedCucumber;
+    public static ItemSeedsGeneric seedZucchini;
+    public static ItemSeedsGeneric seedBean;
+    public static ItemSeedsGeneric seedCorn;
+    public static ItemSeedsGeneric seedLettuce;
+    public static ItemSeedsGeneric seedCelery;
+    public static ItemSeedsGeneric seedCabbage;
+    public static ItemSeedsGeneric seedLeek;
+    public static ItemSeedsGeneric seedRhubarb;
+    public static ItemSeedsGeneric seedBroccoli;
+    public static ItemSeedsGeneric seedCauliflower;
+    public static ItemSeedsGeneric seedOnion;
+    public static ItemSeedsGeneric seedBellpepperRed;
+    public static ItemSeedsGeneric seedBellpepperGreen;
+    public static ItemSeedsGeneric seedChili;
+    public static ItemSeedsGeneric seedAgave;
+    public static ItemSeedsGeneric seedHops;
+    public static ItemSeedsGeneric seedMint;
+    public static ItemSeedsGeneric seedVanilla;
+    public static ItemSeedsGeneric seedGarlic;
+    public static ItemSeedsGeneric seedCotton;
+    public static ItemSeedsGeneric seedFlax;
+    public static ItemSeedsGeneric seedGinger;
 
     public static void addItems()
     {
@@ -230,30 +263,57 @@ public class ItemManager
                 .setCreativeTab(CreativeTabsGB.MISC);
         GameRegistry.registerItem(churn, "hand_churn");
 
-        seedGrapeRed = new ItemSeedsGeneric(BlockManager.cropGrapeRed, Blocks.farmland, "seeds_grapes_red")
-                .setUnlocalizedName(Reference.GB_NAME_PREFIX + "seeds_grapes_red");
-        GameRegistry.registerItem(seedGrapeRed, "seeds_grapes_red");
-        seedGrapeGreen = new ItemSeedsGeneric(BlockManager.cropGrapeGreen, Blocks.farmland, "seeds_grapes_green")
-                .setUnlocalizedName(Reference.GB_NAME_PREFIX + "seeds_grapes_green");
-        GameRegistry.registerItem(seedGrapeGreen, "seeds_grapes_green");
-        seedStrawberry = new ItemSeedsGeneric(BlockManager.cropStrawberry, Blocks.farmland, "seeds_strawberry")
-                .setUnlocalizedName(Reference.GB_NAME_PREFIX + "seeds_strawberry");
-        GameRegistry.registerItem(seedStrawberry, "seeds_strawberry");
-        seedTomato = new ItemSeedsGeneric(BlockManager.cropTomato, Blocks.farmland, "seeds_tomato")
-                .setUnlocalizedName(Reference.GB_NAME_PREFIX + "seeds_tomato");
-        GameRegistry.registerItem(seedTomato, "seeds_tomato");
-        seedRice = new ItemSeedsGeneric(BlockManager.cropRice, Blocks.farmland, "seeds_rice")
-                .setUnlocalizedName(Reference.GB_NAME_PREFIX + "seeds_rice");
-        GameRegistry.registerItem(seedRice, "seeds_rice");
-        seedCorn = new ItemSeedsGeneric(BlockManager.cropCorn, Blocks.farmland, "seeds_corn")
-                .setUnlocalizedName(Reference.GB_NAME_PREFIX + "seeds_corn");
-        GameRegistry.registerItem(seedCorn, "seeds_corn");
-        seedFlax = new ItemSeedsGeneric(BlockManager.cropFlax, Blocks.farmland, "seeds_flax")
-                .setUnlocalizedName(Reference.GB_NAME_PREFIX + "seeds_flax");
-        GameRegistry.registerItem(seedFlax, "seeds_flax");
-        seedGinger = new ItemSeedsGeneric(BlockManager.cropGinger, Blocks.farmland, "seeds_ginger")
-                .setUnlocalizedName(Reference.GB_NAME_PREFIX + "seeds_ginger");
-        GameRegistry.registerItem(seedGinger, "seeds_ginger");
+        seedGrapeRed = registerSeed(BlockManager.cropGrapeRed, "grapes_red");
+        seedGrapeGreen = registerSeed(BlockManager.cropGrapeGreen, "grapes_green");
+        seedKiwi = registerSeed(BlockManager.cropKiwi, "kiwi");
+        seedStrawberry = registerSeed(BlockManager.cropStrawberry, "strawberry");
+        seedRaspberry = registerSeed(BlockManager.cropRaspberry, "raspberry");
+        seedBlackberry = registerSeed(BlockManager.cropBlackberry, "blackberry");
+        seedBlueberry = registerSeed(BlockManager.cropBlueberry, "blueberry");
+        seedSaskatoon = registerSeed(BlockManager.cropSaskatoon, "saskatoon");
+        seedCranberry = registerSeed(BlockManager.cropCranberry, "cranberry");
+        seedPineapple = registerSeed(BlockManager.cropPineapple, "pineapple");
+        seedTomato = registerSeed(BlockManager.cropTomato, "tomato");
+        seedRice = registerSeed(BlockManager.cropRice, "rice");
+        seedBeet = registerSeed(BlockManager.cropBeet, "beet");
+        seedTurnip = registerSeed(BlockManager.cropTurnip, "turnip");
+        seedPeanut = registerSeed(BlockManager.cropPeanut, "peanut");
+        seedPea = registerSeed(BlockManager.cropPea, "pea");
+        seedCucumber = registerSeed(BlockManager.cropCucumber, "cucumber");
+        seedZucchini = registerSeed(BlockManager.cropZucchini, "zucchini");
+        seedBean = registerSeed(BlockManager.cropBean, "beans");
+        seedCorn = registerSeed(BlockManager.cropCorn, "corn");
+        seedLettuce = registerSeed(BlockManager.cropLettuce, "lettuce");
+        seedCelery = registerSeed(BlockManager.cropCelery, "celery");
+        seedCabbage = registerSeed(BlockManager.cropCabbage, "cabbage");
+        seedLeek = registerSeed(BlockManager.cropLeek, "leek");
+        seedRhubarb = registerSeed(BlockManager.cropRhubarb, "rhubarb");
+        seedBroccoli = registerSeed(BlockManager.cropBroccoli, "broccoli");
+        seedCauliflower = registerSeed(BlockManager.cropCauliflower, "cauliflower");
+        seedOnion = registerSeed(BlockManager.cropOnion, "onion");
+        seedBellpepperRed = registerSeed(BlockManager.cropBellpepperRed, "bell_pepper_red");
+        seedBellpepperGreen = registerSeed(BlockManager.cropBellpepperGreen, "bell_pepper_green");
+        seedChili = registerSeed(BlockManager.cropChili, "chili");
+        seedAgave = registerSeed(BlockManager.cropAgave, "agave");
+        seedHops = registerSeed(BlockManager.cropHops, "hops");
+        seedMint = registerSeed(BlockManager.cropMint, "mint");
+        seedVanilla = registerSeed(BlockManager.cropVanilla, "vanilla");
+        seedGarlic = registerSeed(BlockManager.cropGarlic, "garlic");
+        seedCotton = registerSeed(BlockManager.cropCotton, "cotton");
+        seedFlax = registerSeed(BlockManager.cropFlax, "flax");
+        seedGinger = registerSeed(BlockManager.cropGinger, "ginger");
+    }
 
+    private static ItemSeedsGeneric registerSeed(BlockCropsBase crop, String name, Block soil)
+    {
+        ItemSeedsGeneric seed = (ItemSeedsGeneric)new ItemSeedsGeneric(crop, soil, "seeds_" + name)
+                .setUnlocalizedName(Reference.GB_NAME_PREFIX + "seeds_" + name);
+        GameRegistry.registerItem(seed, "seeds_" + name);
+        return seed;
+    }
+
+    private static ItemSeedsGeneric registerSeed(BlockCropsBase crop, String name)
+    {
+        return registerSeed(crop, name, Blocks.farmland);
     }
 }

@@ -5,6 +5,7 @@ import com.squidpalace.gaiasbounty.lib.Reference;
 import com.squidpalace.gaiasbounty.item.*;
 import com.squidpalace.gaiasbounty.world.gen.tree.*;
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockCrops;
 import net.minecraft.block.material.Material;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
@@ -43,14 +44,45 @@ public class BlockManager
     public static Block trellis;
     public static Block basaltSand;
 
-    public static Block cropGrapeRed;
-    public static Block cropGrapeGreen;
-    public static Block cropStrawberry;
-    public static Block cropTomato;
-    public static Block cropRice;
-    public static Block cropCorn;
-    public static Block cropFlax;
-    public static Block cropGinger;
+    public static BlockCropsBase cropGrapeRed;
+    public static BlockCropsBase cropGrapeGreen;
+    public static BlockCropsBase cropKiwi;
+    public static BlockCropsBase cropStrawberry;
+    public static BlockCropsBase cropRaspberry;
+    public static BlockCropsBase cropBlackberry;
+    public static BlockCropsBase cropBlueberry;
+    public static BlockCropsBase cropSaskatoon;
+    public static BlockCropsBase cropCranberry;
+    public static BlockCropsBase cropPineapple;
+    public static BlockCropsBase cropTomato;
+    public static BlockCropsBase cropRice;
+    public static BlockCropsBase cropBeet;
+    public static BlockCropsBase cropTurnip;
+    public static BlockCropsBase cropPeanut;
+    public static BlockCropsBase cropPea;
+    public static BlockCropsBase cropCucumber;
+    public static BlockCropsBase cropZucchini;
+    public static BlockCropsBase cropBean;
+    public static BlockCropsBase cropCorn;
+    public static BlockCropsBase cropLettuce;
+    public static BlockCropsBase cropCelery;
+    public static BlockCropsBase cropCabbage;
+    public static BlockCropsBase cropLeek;
+    public static BlockCropsBase cropRhubarb;
+    public static BlockCropsBase cropBroccoli;
+    public static BlockCropsBase cropCauliflower;
+    public static BlockCropsBase cropOnion;
+    public static BlockCropsBase cropBellpepperRed;
+    public static BlockCropsBase cropBellpepperGreen;
+    public static BlockCropsBase cropChili;
+    public static BlockCropsBase cropAgave;
+    public static BlockCropsBase cropHops;
+    public static BlockCropsBase cropMint;
+    public static BlockCropsBase cropVanilla;
+    public static BlockCropsBase cropGarlic;
+    public static BlockCropsBase cropCotton;
+    public static BlockCropsBase cropFlax;
+    public static BlockCropsBase cropGinger;
 
     public static String[] tree1Subtypes =
             {"apple", "peach", "cherry", "banana"};
@@ -210,43 +242,133 @@ public class BlockManager
                 CreativeTabsGB.MISC);
         GameRegistry.registerBlock(basaltSand, "basaltSand");
 
-        cropGrapeRed = new BlockCropsBase("grapes_red")
-                .setBlockName(Reference.GB_NAME_PREFIX + "crop_grapes_red");
-        GameRegistry.registerBlock(cropGrapeRed, "crop_grapes_red");
-        cropGrapeGreen = new BlockCropsBase("grapes_green")
-                .setBlockName(Reference.GB_NAME_PREFIX + "crop_grapes_green");
-        GameRegistry.registerBlock(cropGrapeGreen, "crop_grapes_green");
-        cropStrawberry = new BlockCropsBase("strawberry").setBlockName(Reference.GB_NAME_PREFIX + "crop_strawberry");
-        GameRegistry.registerBlock(cropStrawberry, "crop_strawberry");
-        cropTomato = new BlockCropsBase("tomato").setBlockName(Reference.GB_NAME_PREFIX + "crop_tomato");
-        GameRegistry.registerBlock(cropTomato, "crop_tomato");
-        cropRice= new BlockCropsBase("rice").setBlockName(Reference.GB_NAME_PREFIX + "crop_rice");
-        GameRegistry.registerBlock(cropRice, "crop_rice");
-        cropCorn = new BlockCropsBase("corn").setBlockName(Reference.GB_NAME_PREFIX + "crop_corn");
-        GameRegistry.registerBlock(cropCorn, "crop_corn");
-        cropFlax = new BlockCropsBase("flax").setBlockName(Reference.GB_NAME_PREFIX + "crop_flax");
-        GameRegistry.registerBlock(cropFlax, "crop_flax");
-        cropGinger = new BlockCropsBase("ginger").setBlockName(Reference.GB_NAME_PREFIX + "crop_ginger");
-        GameRegistry.registerBlock(cropGinger, "crop_ginger");
+        cropGrapeRed = registerCrop("grapes_red");
+        cropGrapeGreen = registerCrop("grapes_green");
+        cropKiwi = registerCrop("kiwi");
+        cropStrawberry = registerCrop("strawberry");
+        cropRaspberry = registerCrop("raspberry");
+        cropBlackberry = registerCrop("blackberry");
+        cropBlueberry = registerCrop("blueberry");
+        cropSaskatoon = registerCrop("saskatoon");
+        cropCranberry = registerCrop("cranberry");
+        cropPineapple = registerCrop("pineapple");
+        cropTomato = registerCrop("tomato");
+        cropRice = registerCrop("rice");
+        cropBeet = registerCrop("beet");
+        cropTurnip = registerCrop("turnip");
+        cropPeanut = registerCrop("peanut");
+        cropPea = registerCrop("pea");
+        cropCucumber = registerCrop("cucumber");
+        cropZucchini = registerCrop("zucchini");
+        cropBean = registerCrop("beans");
+        cropCorn = registerCrop("corn");
+        cropLettuce = registerCrop("lettuce");
+        cropCelery = registerCrop("celery");
+        cropCabbage = registerCrop("cabbage");
+        cropLeek = registerCrop("leek");
+        cropRhubarb = registerCrop("rhubarb");
+        cropBroccoli = registerCrop("broccoli");
+        cropCauliflower = registerCrop("cauliflower");
+        cropOnion = registerCrop("onion");
+        cropBellpepperRed = registerCrop("bell_pepper_red");
+        cropBellpepperGreen = registerCrop("bell_pepper_green");
+        cropChili = registerCrop("chili");
+        cropAgave = registerCrop("agave");
+        cropHops = registerCrop("hops");
+        cropMint = registerCrop("mint");
+        cropVanilla = registerCrop("vanilla");
+        cropGarlic = registerCrop("garlic");
+        cropCotton = registerCrop("cotton");
+        cropFlax = registerCrop("flax");
+        cropGinger = registerCrop("ginger");
+    }
+    private static BlockCropsBase registerCrop(String name)
+    {
+        BlockCropsBase crop = (BlockCropsBase)new BlockCropsBase(name)
+                .setBlockName(Reference.GB_NAME_PREFIX + "crop_" + name);
+        GameRegistry.registerBlock(crop, "crop_" + name);
+        return crop;
     }
 
     public static void setBlockMiscData()
     {
-        ((BlockCropsBase) cropGrapeRed).setSeedItem(new ItemStack(ItemManager.seedGrapeRed, 1))
+        cropGrapeRed.setSeedItem(new ItemStack(ItemManager.seedGrapeRed, 1))
                 .setProduceItem(new ItemStack(ItemManager.foodCrop, 1, 18));
-        ((BlockCropsBase) cropGrapeGreen).setSeedItem(new ItemStack(ItemManager.seedGrapeGreen, 1))
+        cropGrapeGreen.setSeedItem(new ItemStack(ItemManager.seedGrapeGreen, 1))
                 .setProduceItem(new ItemStack(ItemManager.foodCrop, 1, 19));
-        ((BlockCropsBase) cropStrawberry).setSeedItem(new ItemStack(ItemManager.seedStrawberry, 1))
+        cropKiwi.setSeedItem(new ItemStack(ItemManager.seedKiwi, 1))
+                .setProduceItem(new ItemStack(ItemManager.foodCrop, 1, 20));
+        cropStrawberry.setSeedItem(new ItemStack(ItemManager.seedStrawberry, 1))
                 .setProduceItem(new ItemStack(ItemManager.foodCrop, 1, 24));
-        ((BlockCropsBase) cropTomato).setSeedItem(new ItemStack(ItemManager.seedTomato, 1))
+        cropRaspberry.setSeedItem(new ItemStack(ItemManager.seedRaspberry, 1))
+                .setProduceItem(new ItemStack(ItemManager.foodCrop, 1, 25));
+        cropBlackberry.setSeedItem(new ItemStack(ItemManager.seedBlackberry, 1))
+                .setProduceItem(new ItemStack(ItemManager.foodCrop, 1, 26));
+        cropBlueberry.setSeedItem(new ItemStack(ItemManager.seedBlueberry, 1))
+                .setProduceItem(new ItemStack(ItemManager.foodCrop, 1, 27));
+        cropSaskatoon.setSeedItem(new ItemStack(ItemManager.seedSaskatoon, 1))
+                .setProduceItem(new ItemStack(ItemManager.foodCrop, 1, 28));
+        cropCranberry.setSeedItem(new ItemStack(ItemManager.seedCranberry, 1))
+                .setProduceItem(new ItemStack(ItemManager.foodCrop, 1, 29));
+        cropPineapple.setSeedItem(new ItemStack(ItemManager.seedPineapple, 1))
+                .setProduceItem(new ItemStack(ItemManager.foodCrop, 1, 30));
+        cropTomato.setSeedItem(new ItemStack(ItemManager.seedTomato, 1))
                 .setProduceItem(new ItemStack(ItemManager.foodCrop, 1, 31));
-        ((BlockCropsBase) cropRice).setSeedItem(new ItemStack(ItemManager.seedRice, 1))
+        cropRice.setSeedItem(new ItemStack(ItemManager.seedRice, 1))
                 .setProduceItem(new ItemStack(ItemManager.foodCrop, 1, 32));
-        ((BlockCropsBase) cropCorn).setSeedItem(new ItemStack(ItemManager.seedCorn, 1))
+        cropBeet.setSeedItem(new ItemStack(ItemManager.seedBeet, 1))
+                .setProduceItem(new ItemStack(ItemManager.foodCrop, 1, 33));
+        cropTurnip.setSeedItem(new ItemStack(ItemManager.seedTurnip, 1))
+                .setProduceItem(new ItemStack(ItemManager.foodCrop, 1, 34));
+        cropPeanut.setSeedItem(new ItemStack(ItemManager.seedPeanut, 1))
+                .setProduceItem(new ItemStack(ItemManager.foodCrop, 1, 35));
+        cropPea.setSeedItem(new ItemStack(ItemManager.seedPea, 1))
+                .setProduceItem(new ItemStack(ItemManager.foodCrop, 1, 37));
+        cropCucumber.setSeedItem(new ItemStack(ItemManager.seedCucumber, 1))
+                .setProduceItem(new ItemStack(ItemManager.foodCrop, 1, 38));
+        cropZucchini.setSeedItem(new ItemStack(ItemManager.seedZucchini, 1))
+                .setProduceItem(new ItemStack(ItemManager.foodCrop, 1, 39));
+        cropBean.setSeedItem(new ItemStack(ItemManager.seedBean, 1))
+                .setProduceItem(new ItemStack(ItemManager.foodCrop, 1, 40));
+        cropCorn.setSeedItem(new ItemStack(ItemManager.seedCorn, 1))
                 .setProduceItem(new ItemStack(ItemManager.foodCrop, 1, 41));
-        ((BlockCropsBase) cropFlax).setSeedItem(new ItemStack(ItemManager.seedFlax, 1))
+        cropLettuce.setSeedItem(new ItemStack(ItemManager.seedLettuce, 1))
+                .setProduceItem(new ItemStack(ItemManager.foodCrop, 1, 42));
+        cropCelery.setSeedItem(new ItemStack(ItemManager.seedCelery, 1))
+                .setProduceItem(new ItemStack(ItemManager.foodCrop, 1, 43));
+        cropCabbage.setSeedItem(new ItemStack(ItemManager.seedCabbage, 1))
+                .setProduceItem(new ItemStack(ItemManager.foodCrop, 1, 44));
+        cropLeek.setSeedItem(new ItemStack(ItemManager.seedLeek, 1))
+                .setProduceItem(new ItemStack(ItemManager.foodCrop, 1, 45));
+        cropRhubarb.setSeedItem(new ItemStack(ItemManager.seedRhubarb, 1))
+                .setProduceItem(new ItemStack(ItemManager.foodCrop, 1, 46));
+        cropBroccoli.setSeedItem(new ItemStack(ItemManager.seedBroccoli, 1))
+                .setProduceItem(new ItemStack(ItemManager.foodCrop, 1, 47));
+        cropCauliflower.setSeedItem(new ItemStack(ItemManager.seedCauliflower, 1))
+                .setProduceItem(new ItemStack(ItemManager.foodCrop, 1, 48));
+        cropOnion.setSeedItem(new ItemStack(ItemManager.seedOnion, 1))
+                .setProduceItem(new ItemStack(ItemManager.foodCrop, 1, 49));
+        cropBellpepperRed.setSeedItem(new ItemStack(ItemManager.seedBellpepperRed, 1))
+                .setProduceItem(new ItemStack(ItemManager.foodCrop, 1, 50));
+        cropBellpepperGreen.setSeedItem(new ItemStack(ItemManager.seedBellpepperGreen, 1))
+                .setProduceItem(new ItemStack(ItemManager.foodCrop, 1, 51));
+        cropChili.setSeedItem(new ItemStack(ItemManager.seedChili, 1))
+                .setProduceItem(new ItemStack(ItemManager.foodCrop, 1, 52));
+        cropAgave.setSeedItem(new ItemStack(ItemManager.seedAgave, 1))
+                .setProduceItem(new ItemStack(ItemManager.foodCrop, 1, 53));
+        cropHops.setSeedItem(new ItemStack(ItemManager.seedHops, 1))
+                .setProduceItem(new ItemStack(ItemManager.material, 1, 2));
+        cropMint.setSeedItem(new ItemStack(ItemManager.seedMint, 1))
+                .setProduceItem(new ItemStack(ItemManager.material, 1, 7));
+        cropVanilla.setSeedItem(new ItemStack(ItemManager.seedVanilla, 1))
+                .setProduceItem(new ItemStack(ItemManager.material, 1, 8));
+        cropGarlic.setSeedItem(new ItemStack(ItemManager.seedGarlic, 1))
+                .setProduceItem(new ItemStack(ItemManager.material, 1, 9));
+        cropCotton.setSeedItem(new ItemStack(ItemManager.seedCotton, 1))
+                .setProduceItem(new ItemStack(ItemManager.material, 1, 10));
+        cropFlax.setSeedItem(new ItemStack(ItemManager.seedFlax, 1))
                 .setProduceItem(new ItemStack(ItemManager.material, 1, 11));
-        ((BlockCropsBase) cropGinger).setSeedItem(new ItemStack(ItemManager.seedGinger, 1))
+        cropGinger.setSeedItem(new ItemStack(ItemManager.seedGinger, 1))
                 .setProduceItem(new ItemStack(ItemManager.material, 1, 12));
 
         Blocks.fire.setFireInfo(logs1, 30, 60);
